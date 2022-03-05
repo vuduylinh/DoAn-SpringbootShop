@@ -1,0 +1,11 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <ul class="nav nav-justified mb-3">
+    	<li th:each="s: ${statuses}" th:class="@{|nav-item ${session.statusId==s.id ? 'bg-primary' : 'bg-secondary'}|}">
+			<a th:href="@{|/admin/order/status/${s.id}|}" class="nav-link">
+				<b class="badge bg-dark" th:text="${s.orders.size()}"></b>
+				<br>
+				<span th:text="${s.name}" style="font-variant: small-caps; color: white;"></span>
+			</a>
+		</li>
+    </ul>
+</div>

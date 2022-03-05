@@ -1,0 +1,24 @@
+<div class="card" xmlns:th="http://www.thymeleaf.org">
+	<table class="table">
+	    <thead>
+	        <tr>
+	            <th>STT.</th>
+	            <th>Mã</th>
+	            <th>Tên tiếng anh</th>
+	            <th>Tên tiếng Việt</th>
+	            <th></th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr th:each="itm, st : ${items}">
+	            <td th:text="${st.count}"></td>
+	            <td th:text="${itm.id}"></td>
+	            <td th:text="${itm.name}"></td>
+	            <td th:text="${itm.nameVn}"></td>
+	            <td>
+	                <hr th:replace="/admin/shared/frags::lnk-crud('category', ${itm.id})"/>
+	            </td>
+	        </tr>
+	    </tbody>
+	</table>
+</div>

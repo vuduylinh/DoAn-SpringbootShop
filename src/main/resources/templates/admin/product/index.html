@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="/admin/shared/layout::dynamic(~{::view})">
+
+	<div th:fragment="view">
+	    <div class="alert alert-secondary">
+	    	<b><i class='bx bx-gift'></i> PRODUCT MANAGEMENT</b>
+	    	<i class="float-end text-danger" th:text="${message}"></i>
+	    </div>
+
+	    <hr th:replace="/admin/product/_categories">
+
+		<!-- Nav tabs -->
+	    <ul class="nav nav-tabs">
+	        <li class="nav-item">
+	            <a th:class="@{|nav-link ${edit?'active':''}|}" data-bs-toggle="tab" href="#edit">
+	            	<i class='bx bxs-edit'></i> EDIT PRODUCT
+	            </a>
+	        </li>
+	        <li class="nav-item">
+	            <a th:class="@{|nav-link ${edit?'':'active'}|}" data-bs-toggle="tab" href="#list">
+	            	<i class='bx bx-list-ol'></i> LIST OF PRODUCTS
+	            </a>
+	        </li>
+	    </ul>
+	    <!-- Tab panes -->
+	    <div class="tab-content">
+	        <div th:class="@{|tab-pane ${edit?'active':'fade'}|}" id="edit">
+	            <div th:replace="/admin/product/_form"></div>
+	        </div>
+	        <div th:class="@{|tab-pane ${edit?'fade':'active'}|}" id="list">
+	            <div th:replace="/admin/product/_table"></div>
+	        </div>
+	    </div>
+	</div>
+
+</html>

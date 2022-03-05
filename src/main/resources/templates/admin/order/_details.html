@@ -1,0 +1,27 @@
+<div xmlns:th="http://www.thymeleaf.org">
+	<div>ORDER DETAILS</div>
+	<table class="table">
+	    <thead>
+	        <tr>
+	            <th>No.</th>
+	            <th>Id</th>
+	            <th>Name</th>
+	            <th>Unit Price</th>
+	            <th>Discount</th>
+	            <th>Quantity</th>
+	            <th>Amount</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr th:each="itm, st : ${item.orderDetails}">
+	            <td th:text="${st.count}"></td>
+	            <td th:text="${itm.product.id}"></td>
+	            <td th:text="${itm.product.name}"></td>
+	            <td th:text="@{|$${#numbers.formatDecimal(itm.unitPrice, 0, 2)}|}"></td>
+	            <td th:text="@{|${itm.discount * 100}%|}"></td>
+	            <td th:text="${itm.quantity}"></td>
+	            <td th:text="@{|$${#numbers.formatDecimal(itm.unitPrice*itm.quantity*(1-itm.discount), 0, 2)}|}"></td>
+	        </tr>
+	    </tbody>
+	</table>
+</div>

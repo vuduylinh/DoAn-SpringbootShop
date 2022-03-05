@@ -1,0 +1,25 @@
+<div xmlns:th="http://www.thymeleaf.org">
+<form th:object="${filter}" action="/admin/account/filter" method="post" class="d-flex">
+	<div class="input-group me-3">
+		<span class="input-group-text"><i class='bx bxs-user-account'></i></span>
+		<select th:field="*{role}" class="form-select">
+			<option th:value="0">Customers</option>
+			<option th:value="1">Masters</option>
+			<option th:value="2">Both</option>
+		</select>
+	</div>
+	<div class="input-group me-3">
+		<span class="input-group-text"><i class='bx bx-user-check'></i></span>
+		<select th:field="*{activated}" class="form-select">
+			<option th:value="1">Active</option>
+			<option th:value="0">Inactive</option>
+			<option th:value="2">Both</option>
+		</select>
+	</div>
+	<div class="input-group me-3">
+		<span class="input-group-text"><i class='bx bx-search'></i></span>
+		<input th:field="*{keyword}" class="form-control" placeholder="Keywords">
+	</div>
+	<button class="btn btn-primary">Search</button>
+</form>
+</div>

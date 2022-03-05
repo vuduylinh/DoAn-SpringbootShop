@@ -1,0 +1,33 @@
+<div class="card" xmlns:th="http://www.thymeleaf.org">
+	<table class="table">
+	    <thead>
+	        <tr>
+	            <th>No.</th>
+	            <th>Id</th>
+	            <th>Customer</th>
+	            <th>Mobile</th>
+	            <th>Address</th>
+	            <th>Date</th>
+	            <th>Amount</th>
+	            <th></th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr th:each="itm, st : ${page}">
+	            <td th:text="${st.count + page.number * page.size}"></td>
+	            <td th:text="${itm.id}"></td>
+	            <td th:text="${itm.account.fullname}"></td>
+	            <td th:text="${itm.mobile}"></td>
+	            <td th:text="${itm.address}"></td>
+	            <td th:text="${itm.orderDate}"></td>
+	            <td th:text="@{|$${#numbers.formatDecimal(itm.amount, 0, 2)}|}"></td>
+	            <td>
+	                <hr th:replace="/admin/shared/frags::lnk-crud('order', ${itm.id})"/>
+	            </td>
+	        </tr>
+	    </tbody>
+	</table>
+	<div class="card-footer">
+		<hr th:replace="/admin/order/_pager">
+	</div>
+</div>

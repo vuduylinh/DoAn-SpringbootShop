@@ -1,0 +1,25 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <div class="text-center my-1" th:fragment="btn-crud(path, id)">
+    	<button th:formaction="@{|/admin/${path}/create|}" class="btn btn-outline-primary rounded-pill px-4" th:classappend="${id == null ? '' : 'disabled'}">
+        	<i class='bx bxs-file-plus'></i> Thêm mới
+        </button>
+        <button th:formaction="@{|/admin/${path}/update|}" class="btn btn-outline-success rounded-pill px-4" th:classappend="${id != null ? '' : 'disabled'}">
+        	<i class='bx bx-save'></i> Cập nhật
+        </button>
+        <a th:href="@{|/admin/${path}/delete/${id}|}" class="btn btn-outline-danger rounded-pill px-4" th:classappend="${id != null ? '' : 'disabled'}">
+        	<i class='bx bx-trash'></i> Xóa
+        </a>
+        <a th:href="@{|/admin/${path}/reset|}" class="btn btn-outline-secondary rounded-pill px-4">
+        	<i class='bx bx-reset'></i> Làm mới
+        </a>
+    </div>
+    
+    <div th:fragment="lnk-crud(path, id)">
+    	<a th:href="@{|/admin/${path}/edit/${id}|}" class="btn btn-sm btn-outline-warning rounded-pill px-3">
+        	<i class='bx bx-edit'></i> Sửa
+        </a>
+        <a th:href="@{|/admin/${path}/delete/${id}|}" class="btn btn-sm btn-outline-danger rounded-pill px-3">
+        	<i class='bx bx-trash'></i> Xóa
+        </a>
+    </div>
+</div>

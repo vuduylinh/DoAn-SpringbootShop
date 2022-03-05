@@ -1,0 +1,29 @@
+<div class="card" xmlns:th="http://www.thymeleaf.org">
+	<ul th:with="path='/admin/product/paginate'" class="pagination justify-content-center my-1">
+		<li class="page-item">
+			<a class="page-link" th:href="@{|${path}/0|}">
+				<i class='bx bxs-chevrons-up'></i>
+			</a>
+		</li>
+		<li th:class="@{|page-item ${page.first ? 'disabled' : ''}|}">
+			<a class="page-link" th:href="@{|${path}/${page.number - 1}|}">
+				<i class='bx bxs-chevrons-left'></i>
+			</a>
+		</li>
+		<li th:each="n: ${#numbers.sequence(0, page.totalPages-1)}" class="page-item">
+			<a class="page-link" th:href="@{|${path}/${n}|}">
+				<span th:text="${n + 1}"></span>
+			</a>
+		</li>
+		<li th:class="@{|page-item ${page.last ? 'disabled':''}|}">
+			<a class="page-link" th:href="@{|${path}/${page.number + 1}|}">
+				<i class='bx bxs-chevrons-right'></i>
+			</a>
+		</li>
+		<li class="page-item">
+			<a class="page-link" th:href="@{|${path}/${page.totalPages - 1}|}">
+				<i class='bx bxs-chevrons-down'></i>
+			</a>
+		</li>
+	</ul>
+</div>

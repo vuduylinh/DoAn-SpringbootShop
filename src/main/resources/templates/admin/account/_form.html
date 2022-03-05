@@ -1,0 +1,73 @@
+<div xmlns:th="http://www.thymeleaf.org">
+	
+    <form th:object="${item}" class="card" method="post" enctype="multipart/form-data">
+        <div class="card-body">
+        	<div class="row">
+	        	<div class="col-2 text-center">
+	        		<img th:src="@{|/images/photos/*{photo}|}" id="photo_img" style="height: 215px; max-width: 90%">
+	        	</div>
+				<div class="col-10">
+				<div class="row mb-3">
+			        <div class="col">
+			            <label>Username</label>
+			            <input th:field="*{username}" class="form-control">
+			        </div>
+			        <div class="col">
+			            <label>Password</label>
+			            <input name="password" th:value="*{password}" type="password" class="form-control">
+			        </div>
+			        <div class="col">
+			            <label>Fullname</label>
+			            <input th:field="*{fullname}" class="form-control">
+			        </div>
+		        </div>
+		        <div class="row mb-3">
+		        	<div class="col">
+			            <label>Photo</label>
+			            <input type="file" name="photo_file" class="form-control">
+			            <input th:field="*{photo}" type="hidden">
+			        </div>
+			        <div class="col">
+			            <label>Email</label>
+			            <input th:field="*{email}" class="form-control">
+			        </div>
+			        <div class="col">
+			            <label>Mobile</label>
+			            <input th:field="*{mobile}" class="form-control">
+			        </div>
+		        </div>
+		        
+		        <div class="row mb-3">
+		        	<div class="col">
+			            <label>Address</label>
+			            <input th:field="*{address}" class="form-control">
+			        </div>
+			        <div class="col">
+			            <label>Authorities</label>
+			            <div class="form-control d-flex">
+							<div th:each="r: ${roles}" class="form-check form-switch me-3">
+								<input th:value="${r.id}"  th:checked="${item.hasRole(r)}" th:id="${r.id}" name="roleIds" type="checkbox" class="form-check-input">
+								<label th:text="${r.name}" class="form-check-label" th:for="${r.id}"></label>
+							</div>
+			            </div>
+			        </div>
+			        <div class="col-2">
+			            <label>Activated?</label>
+			            <div class="form-control">
+			            	<label>
+			            		<input th:field="*{activated}" type="radio" th:value="true"> Yes
+			            	</label>
+			            	<label>
+			            		<input th:field="*{activated}" type="radio" th:value="false"> No
+			            	</label>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+        	</div>
+        </div>
+        <div class="card-footer">
+            <hr th:replace="/admin/shared/frags::btn-crud('account', *{username})"/>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="/admin/shared/layout::dynamic(~{::view})">
+
+<div th:fragment="view">
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="/js/estore.chart.js"></script>
+    <script src="/js/estore.chart.revenue.js"></script>
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col">
+                <div class="ratio ratio-16x9">
+                    <div id="line-chart-product" class="shadow-sm border rounded"></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="ratio ratio-16x9">
+                    <div id="pie-chart-category" class="shadow-sm border rounded"></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="ratio ratio-16x9">
+                    <div id="line-chart-customer" class="shadow-sm border rounded"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <div class="ratio ratio-16x9">
+                    <div id="column-chart-year" class="shadow-sm border rounded"></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="ratio ratio-16x9">
+                    <div id="pie-chart-quarter" class="shadow-sm border rounded"></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="ratio ratio-16x9">
+                    <div id="column-chart-month" class="shadow-sm border rounded"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

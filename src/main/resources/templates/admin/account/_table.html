@@ -1,0 +1,34 @@
+<div class="card" xmlns:th="http://www.thymeleaf.org">
+	<div class="card-header">
+		<div th:replace="/admin/account/_filter"></div>
+	</div>
+	<table class="table">
+	    <thead>
+	        <tr>
+	            <th>No.</th>
+	            <th>Username</th>
+	            <th>Fullname</th>
+	            <th>Email</th>
+	            <th>Mobile</th>
+	            <th>Activated?</th>
+	            <th></th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr th:each="itm, st : ${page.content}">
+	            <td th:text="${st.count + page.number * page.size}"></td>
+	            <td th:text="${itm.username}"></td>
+	            <td th:text="${itm.fullname}"></td>
+	            <td th:text="${itm.email}"></td>
+	            <td th:text="${itm.mobile}"></td>
+	            <td th:text="${itm.activated?'Yes':'No'}"></td>
+	            <td>
+	                <hr th:replace="/admin/shared/frags::lnk-crud('account', ${itm.username})"/>
+	            </td>
+	        </tr>
+	    </tbody>
+	</table>
+	<div class="card-footer">
+		<div th:replace="/admin/account/_pager"></div>
+	</div>
+</div>

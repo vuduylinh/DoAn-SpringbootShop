@@ -1,0 +1,23 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <form th:object="${item}" method="post" class="card was-validated">
+    	<div class="card-body">
+	        <div class="mb-3">
+	            <label>Mã Loại (Category Id)</label>
+	            <input th:field="*{id}" class="form-control" placeholder="Auto Number" readonly>
+	        </div>
+	        <div class="mb-3">
+	            <label>Tên tiếng anh (English Name)</label>
+	            <i class="text-danger float-end">Không được để trống khi tạo.</i>
+	            <input placeholder="EX: refrigerator ..." th:field="*{name}" class="form-control" required>
+	        </div>
+	        <div class="mb-3">
+	            <label>Tên tiếng việt (Vietnamese Name)</label>
+	            <i class="text-danger float-end">Không được để trống khi tạo.</i>
+	            <input placeholder="VD: tủ lạnh ..." th:field="*{nameVn}" class="form-control" required>
+	        </div>
+        </div>
+        <div class="card-footer">
+            <hr th:replace="/admin/shared/frags::btn-crud('category', *{id})"/>
+        </div>
+    </form>
+</div>
