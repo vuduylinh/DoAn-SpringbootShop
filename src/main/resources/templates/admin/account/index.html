@@ -4,7 +4,7 @@
 
 	<div th:fragment="view">
 	    <div class="alert alert-secondary">
-	    	<b><i class='bx bxs-user-account'></i> ACCOUNT MANAGEMENT</b>
+	    	<b><i class='bx bxs-user-account'></i>QUẢN LÝ TÀI KHOẢN</b>
 	    	<i class="float-end text-danger" th:text="${message}"></i>
 	    </div>
 	    
@@ -12,12 +12,12 @@
 	    <ul class="nav nav-tabs">
 	        <li class="nav-item">
 	            <a th:class="@{|nav-link ${edit?'active':''}|}" data-bs-toggle="tab" href="#edit">
-	            	<i class='bx bxs-edit'></i> EDIT ACCOUNT
+	            	<i class='bx bxs-edit'></i> SỬA TÀI KHOẢN
 	            </a>
 	        </li>
 	        <li class="nav-item">
 	            <a th:class="@{|nav-link ${!edit?'active':''}|}" data-bs-toggle="tab" href="#list">
-	            	<i class='bx bx-list-ol'></i> LIST OF ACCOUNTS
+	            	<i class='bx bx-list-ol'></i> DANH SÁCH CÁC TÀI KHOẢN
 	            </a>
 	        </li>
 	    </ul>
