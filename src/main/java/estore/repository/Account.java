@@ -34,10 +34,11 @@ public class Account {
 	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
 	List<Authority> authorities;
 	
-	public boolean hasRole(Role role) {
+	public boolean hasRole(Role role) { // kiểm tra tài khoản có vai trò nào?
 		if(this.authorities != null) {
-			return this.authorities.stream()
-					.anyMatch(a -> a.getRole().getId().equals(role.getId()));
+			return this.authorities.stream() // nếu có authorities đổi sang stream() để dùng lambda
+				.anyMatch(a -> a.getRole().getId().equals(role.getId()));
+//				so sánh equals vai trò như nhau thì return true.
 		}
 		return false;
 	}

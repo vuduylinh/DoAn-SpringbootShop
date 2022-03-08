@@ -32,7 +32,7 @@ public class ReportAController {
 	@ResponseBody
 	@RequestMapping({"/api/product/like", "/api/product/like/{size}"})
 	public List<Report> getTopLikes(@PathVariable("size") Optional<Integer> sizeOpts) {
-		int size = sizeOpts.orElse(5);
+		int size = sizeOpts.orElse(5); // truy xuất ra mặt hàng có lươt like nhiều nhất theo top 5
 		return reportService.getTopLikes(size);
 	}
 	

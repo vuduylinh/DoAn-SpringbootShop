@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    $("a[href*=delete]").on("click", function() {
-        if (!confirm("Are you sure to delete this?")) {
+    $("a[href*=delete]").on("click", function() { // khi click vào thẻ a có thuộc tính href chứa chứ delete
+        if (!confirm("Bạn có muốn xóa nó không?")) {
             return false;
         }
     });

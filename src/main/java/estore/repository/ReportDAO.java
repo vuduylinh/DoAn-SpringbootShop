@@ -9,9 +9,10 @@ import org.springframework.data.jpa.repository.Query;
 public interface ReportDAO extends JpaRepository<Order, Long>{
 	@Query("SELECT o.name AS group, o.likeCount AS count "
 			+ " FROM Product o "
-			+ " WHERE o.likeCount > 0"
-			+ " ORDER BY o.likeCount DESC")
-	List<Report> getTopLikes(Pageable pageable);
+			+ " WHERE o.likeCount > 0" // truy xuất từ table Product có các likeCount >0
+			+ " ORDER BY o.likeCount DESC") // sắp xếp linkcount dạng dần
+	List<Report> getTopLikes(Pageable pageable); // nó đc hiểu List<Object[]>
+							//Pageable pageable đưa phân trang này vào để lấy những cái top
 	
 	@Query("SELECT o.name AS group, size(o.shares) AS count"
 			+ " FROM Product o "

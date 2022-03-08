@@ -39,38 +39,32 @@ public class AccountServiceImpl implements AccountService {
 		dao.deleteById(username);
 	}
 
-	@Transactional
+	@Transactional //giao dịch đơn
 	@Override
-	public void create(Account item, List<String> roleIds) {
-//		List<Authority> authorities = roleIds.stream().map(rid -> {
-//			Role role = roleDao.getById(rid);
-//			Authority authority = new Authority(null, item, role);
-//			return authority;
-//		}).toList();
-		List<Authority> authorities = new ArrayList<>();
-		for(String roleId: roleIds) {
+	public void create(Account item, List<String> roleIds) {List<Authority> authorities = new ArrayList<>();
+		for(String roleId: roleIds) { 
 			Role role = roleDao.getById(roleId);
 			Authority authority = new Authority(null, item, role);
 			authorities.add(authority);
-		}
-		item.setAuthorities(authorities);
-		dao.save(item);
-		authorityDao.saveAll(authorities);
+		} // chuyển đổi list các mã roles thành các authority
+		item.setAuthorities(authorities); // sét authorities vào item(accuont)
+		dao.save(item); // lưa Account
+		authorityDao.saveAll(authorities); // continue save authorities
 	}
 
 	@Transactional
 	@Override
 	public void update(Account item, List<String> roleIds) {
-		authorityDao.deleteAll(dao.getById(item.getUsername()).getAuthorities());
+		authorityDao.deleteAll(dao.getById(item.getUsername()).getAuthorities()); // xóa tất cả vai trò hiện có của tài khoản đó.
 		dao.save(item);
 		if(!roleIds.isEmpty()) {
 			List<Authority> authorities = roleIds.stream().map(rid -> {
 				Role role = roleDao.getById(rid);
 				Authority authority = new Authority(null, item, role);
 				return authority;
-			}).collect(Collectors.toList());
-			authorityDao.saveAll(authorities);
-			item.setAuthorities(authorities);
+			}).collect(Collectors.toList()); // code đoạn 'if' đổi toàn bộ các vai trò sang authorities 
+			authorityDao.saveAll(authorities); // lưu vào database
+			item.setAuthorities(authorities); // sét authorities vào item(Account) vừa đc update
 		}
 	}
 	
