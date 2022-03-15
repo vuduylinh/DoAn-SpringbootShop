@@ -20,4 +20,16 @@ public interface ProductService {
 	void update(Product item);
 
 	Page<Product> findByCategoryId(Integer cid, Pageable pageable);
+
+	Page<Product> findByKeywords(String keywords, Pageable unpaged);
+
+	Page<Product> findByDiscount(Pageable unpaged);
+
+	Page<Product> findByFavorite(Pageable unpaged);
+
+	Page<Product> findByLatest(Pageable pageable);
+	
+	Page<Product> findBySpecial(Pageable pageable);
+
+	Page<Product> findByShare(Pageable pageable);
 }

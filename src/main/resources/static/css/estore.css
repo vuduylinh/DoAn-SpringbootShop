@@ -1,0 +1,15 @@
+.CartProduct:hover{
+    margin-top: -5px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.bxs-home:hover {
+	color:gray;
+}
+.Menu_a{
+	font-weight: bold;
+}
+.bx-receipt{
+	margin-top:3px;
+	font-size: 20px;
+}

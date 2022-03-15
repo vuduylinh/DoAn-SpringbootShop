@@ -41,9 +41,10 @@ public class AccountServiceImpl implements AccountService {
 
 	@Transactional //giao dịch đơn
 	@Override
-	public void create(Account item, List<String> roleIds) {List<Authority> authorities = new ArrayList<>();
+	public void create(Account item, List<String> roleIds) {
+		List<Authority> authorities = new ArrayList<>();
 		for(String roleId: roleIds) { 
-			Role role = roleDao.getById(roleId);
+			Role role = roleDao.getById(roleId); // đọc các role từ database ra
 			Authority authority = new Authority(null, item, role);
 			authorities.add(authority);
 		} // chuyển đổi list các mã roles thành các authority

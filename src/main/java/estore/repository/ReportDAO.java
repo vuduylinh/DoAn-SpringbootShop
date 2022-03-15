@@ -14,7 +14,7 @@ public interface ReportDAO extends JpaRepository<Order, Long>{
 	List<Report> getTopLikes(Pageable pageable); // nó đc hiểu List<Object[]>
 							//Pageable pageable đưa phân trang này vào để lấy những cái top
 	
-	@Query("SELECT o.name AS group, size(o.shares) AS count"
+	@Query("SELECT o.name AS group, size(o.shares) AS count" // truy van ra so lan shares cua mat hang do
 			+ " FROM Product o "
 			+ " WHERE o.shares IS NOT EMPTY")
 	List<Report> getTopShares(Pageable pageable);
@@ -36,7 +36,7 @@ public interface ReportDAO extends JpaRepository<Order, Long>{
 			+ " MAX(o.unitPrice) AS max, "
 			+ " AVG(o.unitPrice) AS avg"
 			+ " FROM OrderDetail o "
-			+ " GROUP BY o.product.name")
+			+ " GROUP BY o.product.name") // truy van doanh so tung mặt hàng
 	List<Report> getRevenueByProduct();
 
 	@Query("SELECT o.product.category.name AS group,"
@@ -46,7 +46,7 @@ public interface ReportDAO extends JpaRepository<Order, Long>{
 			+ " MAX(o.unitPrice) AS max, "
 			+ " AVG(o.unitPrice) AS avg"
 			+ " FROM OrderDetail o "
-			+ " GROUP BY o.product.category.name")
+			+ " GROUP BY o.product.category.name") // truy vấn doanh số từng loại hàng
 	List<Report> getRevenueByCategory();
 
 	@Query("SELECT o.order.account.username AS group,"

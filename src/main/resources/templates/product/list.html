@@ -1,0 +1,23 @@
+<html th:replace="/shared/layout::dynamic(~{::main})" xmlns:th="http://www.thymeleaf.org">
+<main>
+	<h4>SẢN PHẨM</h4>
+	<hr>
+	<div class="row">
+		<div th:each="p: ${list}" class="col-sm-3 CartProduct" >
+			<div class="card p-3 m-2 shadow" id="">
+				<div class="">
+					<div th:text="${p.name}"></div>
+				</div>
+				<div class="card-body" style="height: 250px">
+					<img alt="" th:src="@{|/images/items/${p.image}|}" height="100%" width="80%">
+				</div>
+				<div class="">
+					<div th:text="${p.unitPrice}"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</main>
+
+</html>

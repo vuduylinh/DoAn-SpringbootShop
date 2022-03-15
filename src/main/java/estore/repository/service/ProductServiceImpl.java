@@ -44,4 +44,40 @@ public class ProductServiceImpl implements ProductService {
 	public Page<Product> findByCategoryId(Integer cid, Pageable pageable) {
 		return dao.findByCategoryId(cid, pageable);
 	}
+
+	@Override
+	public Page<Product> findByKeywords(String keywords, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return dao.findByKeywords("%"+keywords+"%",pageable);
+	}
+
+	@Override
+	public Page<Product> findByDiscount(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return dao.findByDisconut(pageable);
+	}
+
+	@Override
+	public Page<Product> findByFavorite(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return dao.findByFavorite(pageable);
+	}
+
+	@Override
+	public Page<Product> findByLatest(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return dao.findByLatest(pageable);
+	}
+	
+	@Override
+	public Page<Product> findBySpecial(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return dao.findBySpecial(pageable);
+	}
+
+	@Override
+	public Page<Product> findByShare(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return dao.findByShare(pageable);
+	}
 }

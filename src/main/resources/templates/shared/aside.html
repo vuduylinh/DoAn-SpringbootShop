@@ -1,18 +1,35 @@
 <div xmlns:th="http://www.thymeleaf.org">
-    <div class="card mb-3">
-        <div class="card-header">TITLE</div>
+    <div class="card mb-3 shadow-sm bg-body rounded ">
+        <div class="card-header fw-bold">DANH MỤC</div>
+        <div class="list-group list-group-flush">
+	        <!-- <th:block th:each="c :${categories}">
+	        	<a th:text="${c.nameVn}" th:href="@{|/product/category/${c.id}|}" class="list-group-item list-group-item-action"></a>
+	        </th:block> -->
+                        <a class="list-group-item list-group-item-action nav-link "  href="/product/discount">Khuyến mại</a>
+                    
+                   
+                        <a class="list-group-item list-group-item-action nav-link " href="/product/latest">Hàng mới</a>
+                   
+                  
+                        <a class="list-group-item list-group-item-action nav-link " href="/product/favorite">Yêu thích</a>
+                  
+                     
+                        <a class="list-group-item list-group-item-action nav-link " href="/product/best">Bán chạy</a>
+                   
+                  
+                        <a class="list-group-item list-group-item-action nav-link " href="/product/special">Đăc biệt</a>
+                   
+                     
+                        <a class="list-group-item list-group-item-action nav-link " href="/product/share">Chia sẽ nhiều</a>
+                    
+        </div>
+    </div>
+    <!-- <div class="card mb-3">
+        <div class="card-header">DEMO</div>
         <div class="list-group list-group-flush">
             <a href="#" class="list-group-item list-group-item-action">First item</a>
             <a href="#" class="list-group-item list-group-item-action">Second item</a>
             <a href="#" class="list-group-item list-group-item-action">Third item</a>
         </div>
-    </div>
-    <div class="card mb-3">
-        <div class="card-header">TITLE</div>
-        <div class="list-group list-group-flush">
-            <a href="#" class="list-group-item list-group-item-action">First item</a>
-            <a href="#" class="list-group-item list-group-item-action">Second item</a>
-            <a href="#" class="list-group-item list-group-item-action">Third item</a>
-        </div>
-    </div>
+    </div> -->
 </div>
