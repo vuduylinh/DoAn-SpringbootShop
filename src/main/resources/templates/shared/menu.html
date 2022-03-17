@@ -6,13 +6,13 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="hmenu">
-            		<ul class="navbar-nav me-auto">
+            		<!-- <ul class="navbar-nav me-auto">
                     <li  th:each="c :${categories}" class="nav-item">
                         <a class="nav-link Menu_a" th:text="${c.nameVn}" th:href="@{|/product/category/${c.id}|}"></a>
                     </li>
-                    </ul>
+                    </ul> -->
             
-               <!--  <ul class="navbar-nav me-auto">
+                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link Menu_a"  href="/product/discount">Khuyến mại</a>
                     </li>
@@ -23,15 +23,12 @@
                         <a class="nav-link Menu_a" href="/product/favorite">Yêu thích</a>
                     </li>
                      <li class="nav-item">
-                        <a class="nav-link Menu_a" href="/product/best">Bán chạy</a>
-                    </li>
-                     <li class="nav-item">
                         <a class="nav-link Menu_a" href="/product/special">Đăc biệt</a>
                     </li>
                      <li class="nav-item">
                         <a class="nav-link Menu_a" href="/product/share">Chia sẽ nhiều</a>
                     </li>
-                </ul> -->
+                </ul> 
                 <!-- form search -->
                 <form class="navbar-nav" action="/product/search" method="post">
 			        <input th:value="${param.keywords}" class="form-control me-2" name="keywords" type="text" placeholder="nhập từ khóa...">

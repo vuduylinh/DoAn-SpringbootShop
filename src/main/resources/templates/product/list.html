@@ -4,15 +4,24 @@
 	<hr>
 	<div class="row">
 		<div th:each="p: ${list}" class="col-sm-3 CartProduct" >
-			<div class="card p-3 m-2 shadow" id="">
+			<div class="card p-3 m-2 shadow" th:attr="data-id=${p.id}" > <!-- data-id="${p.id}" -->
 				<div class="">
 					<div th:text="${p.name}"></div>
 				</div>
-				<div class="card-body" style="height: 250px">
-					<img alt="" th:src="@{|/images/items/${p.image}|}" height="100%" width="80%">
+				<div class="card-body text-center pt-5" style="height: 300px">
+					<a th:href="@{|/product/detail/${p.id}|}"> <!-- gọi đến trang detail -->
+							<img th:src="@{|/images/items/${p.image}|}" style="height: 150px; max-width: 95%" alt="ảnh sản phẩm" >
+					</a>
 				</div>
-				<div class="">
-					<div th:text="${p.unitPrice}"></div>
+				<div class="text-end">
+					<div>
+						<del th:if="${p.discount > 0}" th:text="@{|${#numbers.formatDecimal(p.unitPrice, 0, 2)}đ|}"></del>
+						<i th:text="@{|${#numbers.formatDecimal(p.promotePrice, 0, 2)}đ|}"></i>
+							
+					</div>
+					<button type="button" class="btn btn-sm btn-outline-secondary bx bxs-cart-add add-to-cart"></button>
+					<button type="button" class="btn btn-sm btn-outline-secondary bx bx-heart add-like"></button>
+					<button type="button" class="btn btn-sm btn-outline-secondary bx bx-share bx-flip-horizontal add-share"></button>
 				</div>
 			</div>
 		</div>

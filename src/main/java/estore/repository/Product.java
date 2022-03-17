@@ -56,7 +56,7 @@ public class Product {
 	@OneToMany(mappedBy = "product")
 	List<OrderDetail> orderDetails;
 	
-	public double getPromotePrice() {
+	public double getPromotePrice() { // tính giảm giá
 		return this.unitPrice * (1 - this.discount);
 	}
 }

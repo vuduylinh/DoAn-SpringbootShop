@@ -1,5 +1,6 @@
 package estore.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import estore.repository.Product;
 import estore.repository.service.ProductService;
@@ -73,5 +75,22 @@ public class ProductController {
 			Page<Product> page = productService.findByShare(pageable);
 			model.addAttribute("list", page.getContent());
 			return "product/list";
+		}
+		
+		@RequestMapping("/product/detail/{id}") // details product
+		public String detail(Model model, @PathVariable("id") Integer id) {
+			Product product = productService.getById(id);
+			model.addAttribute("item", product);
+			return "product/detail";
+		}
+		
+		@ResponseBody
+		@RequestMapping("/product/like/{id}") // like
+		public Integer like(Model model, @PathVariable("id") Integer id) {
+			Product product = productService.getById(id);
+			product.setLikeCount(product.getLikeCount()+ 1);
+			productService.update(product);
+			model.addAttribute("item", product);
+			return product.getLikeCount();
 		}
 }

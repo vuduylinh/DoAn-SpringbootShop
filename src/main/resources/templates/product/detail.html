@@ -1,0 +1,24 @@
+<html th:replace="/shared/layout::dynamic(~{::main})" xmlns:th="http://www.thymeleaf.org">
+<main>
+	<h4>CHI TIẾT SẢN PHẨM</h4>
+	<hr>
+	<img alt=""  th:src="@{|/images/items/${item.image}|}">
+		<ul>
+			<li>Tên: <i th:text="${item.name}"></i></li>
+			<li>Giá: <i th:text="${item.unitPrice}"></i></li>
+			<li>Ngày sản xuất: <i th:text="${item.productDate}"></i></li>
+			<li>Hàng đặc biệt: <i th:text="${item.special ? 'phải':'không phải'}"></i></li>
+			<li>Loại sản phẩm: <i th:text="${item.category.nameVn}"></i></li>
+			<li>Mô tả sản phẩm: <i th:text="${item.description}"></i></li>
+							
+		</ul>
+		<div>CÁC SẢN PHẨM CÙNG LOẠI</div>
+		<ul>
+			<li th:each="p: ${item.category.products}">
+				<a th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a>
+			</li>
+		</ul>
+		
+</main>
+
+</html>
