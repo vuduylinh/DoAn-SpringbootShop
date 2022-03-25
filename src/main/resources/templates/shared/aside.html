@@ -1,6 +1,6 @@
 <div xmlns:th="http://www.thymeleaf.org">
     <div class="card mb-3 shadow-sm bg-body rounded ">
-        <div class="card-header fw-bold">DANH MỤC</div>
+        <div class="card-header fw-bold">DANH MỤC <i class='bx bx-food-menu' ></i></div>
         <div class="list-group list-group-flush">
 	         <th:block th:each="c :${categories}">
 	        	<a th:text="${c.nameVn}" th:href="@{|/product/category/${c.id}|}" class="list-group-item list-group-item-action"></a>

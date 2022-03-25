@@ -7,7 +7,37 @@ $(document).ready(function(){
            })
         });
 
+
         $(".add-share").on("click", function(){
-            alert("share")
+          id = $(this).closest("[data-id]").attr("data-id");
+            $("#share-dialog").modal('show')
         });
+        
+
+         $(".nn-share-send").on("click", function(){    // fetch API POST
+           var url = "/product/share_send" ;
+           var form = {
+             sender: $("#sender").val(),
+             receiver: $("#receiver").val(),
+             subject: $("#subject").val(),
+             text: $("#text").val(),
+            product:{id: id}
+           }
+
+           const options = {
+            method: 'POST',
+            body: JSON.stringify(form),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+          }
+
+          fetch(url, options).then(resp => { // day len server
+            $("#share-dialog").modal('hiden')
+          });
+           console.log(form)
+        });
+
+        
+       
 });

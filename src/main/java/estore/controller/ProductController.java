@@ -8,14 +8,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import estore.repository.Product;
+import estore.repository.Share;
 import estore.repository.service.ProductService;
 //@RequestParam annotation được sử dụng để trích xuất dữ liệu từ query parameters
 //form parameters, và kể cả các tập tin từ request.
+import estore.repository.service.ShareService;
 
 @Controller
 public class ProductController {
@@ -93,4 +96,14 @@ public class ProductController {
 			model.addAttribute("item", product);
 			return product.getLikeCount();
 		}
+		@Autowired
+		ShareService shareService;
+		
+		@ResponseBody
+		@RequestMapping("/product/share_send") // like
+		public void share(Model model,@RequestBody Share share) {
+			shareService.create(share);
+		}
+		
+		
 }

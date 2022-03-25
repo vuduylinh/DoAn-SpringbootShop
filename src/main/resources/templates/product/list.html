@@ -4,13 +4,13 @@
 	<hr>
 	<div class="row">
 		<div th:each="p: ${list}" class="col-sm-3 CartProduct" >
-			<div class="card p-3 m-2 shadow" th:attr="data-id=${p.id}" > <!-- data-id="${p.id}" -->
+			<div class="card p-3 mb-3 shadow" th:attr="data-id=${p.id}" > <!-- data-id="${p.id}" -->
 				<div class="">
 					<div th:text="${p.name}"></div>
 				</div>
-				<div class="card-body text-center pt-5" style="height: 300px">
+				<div class="card-body text-center pt-3" style="height: 250px">
 					<a th:href="@{|/product/detail/${p.id}|}"> <!-- gọi đến trang detail -->
-							<img th:src="@{|/images/items/${p.image}|}" style="height: 150px; max-width: 95%" alt="ảnh sản phẩm" >
+							<img th:src="@{|/images/items/${p.image}|}" style="height: 80%; max-width: 100%" alt="ảnh sản phẩm" >
 					</a>
 				</div>
 				<div class="text-end">
@@ -19,14 +19,18 @@
 						<i th:text="@{|${#numbers.formatDecimal(p.promotePrice, 0, 2)}đ|}"></i>
 							
 					</div>
+					<!-- cart  -->
 					<button type="button" class="btn btn-sm btn-outline-secondary bx bxs-cart-add add-to-cart"></button>
+					<!-- Like  -->
 					<button type="button" class="btn btn-sm btn-outline-secondary bx bx-heart add-like"></button>
+					<!-- share  -->
 					<button type="button" class="btn btn-sm btn-outline-secondary bx bx-share bx-flip-horizontal add-share"></button>
 				</div>
 			</div>
 		</div>
 
 	</div>
+	<div th:replace="/product/_share-dialog"></div>
 </main>
 
 </html>
