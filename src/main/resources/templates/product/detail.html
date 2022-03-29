@@ -1,5 +1,5 @@
 <html th:replace="/shared/layout::dynamic(~{::main})" xmlns:th="http://www.thymeleaf.org">
-<main>
+<main th:attr="data-id=${item.id}">
 	<h4>CHI TIẾT SẢN PHẨM</h4>
 	<hr>
 	<img alt=""  th:src="@{|/images/items/${item.image}|}">
@@ -12,13 +12,14 @@
 			<li>Mô tả sản phẩm: <i th:text="${item.description}"></i></li>
 							
 		</ul>
+		<div th:replace="product/_item-actions"></div>
 		<div>CÁC SẢN PHẨM CÙNG LOẠI</div>
 		<ul>
 			<li th:each="p: ${item.category.products}">
 				<a th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a>
 			</li>
 		</ul>
-		
+		<div th:replace="/product/_share-dialog"></div>
 </main>
 
 </html>

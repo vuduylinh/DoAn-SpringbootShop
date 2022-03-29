@@ -33,17 +33,9 @@ public interface CartService {
 	/**
 	 * Lấy tổng số lượng các mặt hàng trong giỏ
 	 */
-	default int getCount() {
-		return this.getItems().stream()
-			.mapToInt(item -> item.getQty())
-			.sum();
-	}
+	 int getCount();
 	/**
 	 * Tính tổng số tiền các mặt hàng trong giỏ
 	 */
-	default double getAmount() {
-		return this.getItems().stream()
-			.mapToDouble(item -> item.getAmount())
-			.sum();
-	}
+	double getAmount();
 }

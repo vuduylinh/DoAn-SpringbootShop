@@ -1,0 +1,53 @@
+<html th:replace="/shared/layout::dynamic(~{::main})" xmlns:th="http://www.thymeleaf.org">
+<main>
+	<h4 class="alert alert-success">Các Sản Mặt Hàng đã chọn</h4>
+	<table th:fragment="scart" class="table">
+		<thead>
+			<tr>
+				<th>Mã</th>
+				<th>Hình</th>
+				<th>Tên</th>
+				<th>Đơn giá</th>
+				<th>Giảm giá</th>
+				<th>Số lượng</th>
+				<th>Thành tiền</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each=" item: ${cart.items}" th:attr="data-id=${item.product.id}, data-price=${item.product.unitPrice * (1 - item.product.discount)}">
+																					<!-- ${item.product.promotePrice} -->
+				<th:block th:object="${item.product}">
+					<td th:text="*{id}"></td>
+					<td>
+						<img th:src="@{|/images/items/${item.product.image}|}" style="max-width: 60px" alt="ảnh sản phẩm" >
+					</td>
+					<td th:text="*{name}"></td>
+					<td th:text="*{unitPrice}"></td>
+					<td th:text="*{discount}"></td>
+					<!-- <td th:text="${item.qty}"></td> -->
+					<td>
+						<input th:value="${item.qty}" class="qty-cart-update form-control" type="number" min="1" style="width: 70px;">
+					</td>
+					<td class="item-amount" th:text="${item.qty * item.product.promotePrice}"></td>
+					<td>
+						<button class="btn btn-sm btn-danger remove-from-cart">
+								<i class='bx bx-trash'></i>
+						</button>
+
+					</td>
+				</th:block>
+			</tr>
+		</tbody>
+	</table>
+	<div class="text-end">
+			<a href="/cart/clear" class="btn btn-sm btn-danger text-end clear-cart">
+				Xóa tất cả
+			</a>
+			
+			<a href="/order/checkout" class="btn btn-sm btn-primary text-end">
+				Thanh toán
+			</a>
+	
+	</div>
+</main>
+</html>

@@ -15,7 +15,7 @@ $(document).ready(function(){
         
 
          $(".nn-share-send").on("click", function(){    // fetch API POST
-           var url = "/product/share_send" ;
+           var url = "/product/share-send" ;
            var form = {
              sender: $("#sender").val(),
              receiver: $("#receiver").val(),
@@ -36,8 +36,5 @@ $(document).ready(function(){
             $("#share-dialog").modal('hiden')
           });
            console.log(form)
-        });
-
-        
-       
+        });   
 });

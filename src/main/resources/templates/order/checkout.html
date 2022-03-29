@@ -1,0 +1,57 @@
+<html th:replace="/shared/layout::dynamic(~{::main})" xmlns:th="http://www.thymeleaf.org">
+<main>
+	<h3 class="alert alert-success">ĐẶT HÀNG</h3>
+	<form th:object="${item}" action="/order/purchase" class="card" method="post">
+    	<div class="card-body">
+    	<!-- !!!!!!!!!! -->
+    		<div class="mb-3">
+	        	<div th:replace="/cart/index::scart"></div>
+	        </div>
+	        
+	    <!-- !!!!!!!!!! -->
+	    
+    		<div class="row mb-3">
+		        <div class="col">
+		            <label>Id</label>
+		            <input th:field="*{id}" class="form-control" placeholder="Auto Number" readonly>
+		        </div>
+		        <div class="col">
+		            <label>Customer</label>
+		            <input th:field="*{account.username}" class="form-control" readonly>
+		        </div>
+		        <div class="col">
+		            <label>Order Date</label>
+		            <input th:field="*{orderDate}" class="form-control" readonly>
+		        </div>
+		        <div class="col">
+		            <label>Total Amount</label>
+		            <input th:field="*{amount}" class="form-control" readonly>
+		        </div>
+	        </div>
+	        <div class="row mb-3">
+		        <div class="col">
+		            <label>Recipient</label>
+		            <input th:field="*{recipient}" class="form-control">
+		        </div>
+		        <div class="col">
+		            <label>Mobile</label>
+		            <input th:field="*{mobile}" class="form-control">
+		        </div>
+		        <div class="col-4">
+		            <label>Ship Address</label>
+		            <input th:field="*{address}" class="form-control">
+		        </div>
+		        <input type="hidden" value="0" name="status.id">
+	        </div>
+	        <div class="mb-3">
+	            <label>Notes</label>
+	            <textarea th:field="*{notes}" class="form-control" rows="4"></textarea>
+	        </div>
+	        
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary">Mua Hàng</button>
+        </div>
+    </form>
+</main>
+</html>		

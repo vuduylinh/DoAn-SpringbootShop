@@ -14,6 +14,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import estore.repository.Share;
+
 @Service
 public class MailerServiceImpl implements MailerService{
 	@Autowired
@@ -30,7 +32,7 @@ public class MailerServiceImpl implements MailerService{
 		
 		String from = mail.getFrom();
 		if(from == null || from.trim().length() == 0) {
-			from = "Online Shop <eshop@gmail.com>";
+			from = "Web Store <vulinh3609@gmail.com>";
 		}
 		if(!from.contains("<")) {
 			from = "%s <%s>".formatted(from, from);
@@ -70,7 +72,7 @@ public class MailerServiceImpl implements MailerService{
 		queue.add(mail);
 	}
 
-	@Scheduled(fixedDelay = 2000)
+	@Scheduled(fixedDelay = 2000) // lịch hẹn 2s gọi hàm sendingScheduler() 1 lần
 	public void sendingScheduler() {
 		while(!queue.isEmpty()) {
 			Mail mail = queue.remove(0);
@@ -82,5 +84,22 @@ public class MailerServiceImpl implements MailerService{
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public void sendShare(Share share) {
+		String url="http://localhost:8080/product/detail/" + share.getProduct().getId();
+		String text = share.getText();
+		text += "<br><a href='%s'>Xem chi tiết.</a>".formatted(url);
+		try {
+			Mail mail = new Mail(share.getReceiver(), share.getSubject(), text);
+			//this.send(mail);
+			this.addToQueue(mail);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} 
+	
+		
 	}
 }

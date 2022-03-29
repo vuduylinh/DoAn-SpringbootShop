@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import estore.repository.Order;
+import estore.service.cart.CartService;
 
 public interface OrderService {
 
@@ -16,4 +17,6 @@ public interface OrderService {
 	void deleteById(Long id);
 
 	Page<Order> findPageByStatusId(Integer statusId, Pageable pageable);
+
+	void create(Order order, CartService cartService);
 }

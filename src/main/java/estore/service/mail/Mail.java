@@ -31,7 +31,7 @@ public class Mail {
 		this.to = to;
 		this.subject = subject;
 		this.text = text;
-		this.from = opts.getOrDefault("from", "Spring Boot Online Store <estore@gmail.com>");
+		this.from = opts.getOrDefault("from", "From Website E-Store <vulinh3609@gmail.com>");
 		this.cc = opts.get("cc");
 		this.bcc = opts.get("bcc");
 		this.attachments = opts.get("attachments");

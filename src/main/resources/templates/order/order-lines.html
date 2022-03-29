@@ -1,0 +1,27 @@
+	<div xmlns:th="http://www.thymeleaf.org">
+	<div>-- Các mặt hàng đã đặt --</div>
+	<table class="table">
+	    <thead>
+	        <tr>
+	            <th>STT.</th>
+	            <th>Mã</th>
+	            <th>Tên</th>
+	            <th>Đơn giá</th>
+	            <th>Gía giảm</th>
+	            <th>Số Lượng</th>
+	            <th>Thành tiền</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr th:each="itm, st : ${item.orderDetails}">
+	            <td th:text="${st.count}"></td>
+	            <td th:text="${itm.product.id}"></td>
+	            <td th:text="${itm.product.name}"></td>
+	            <td th:text="@{|${#numbers.formatDecimal(itm.unitPrice, 0, 2)}đ|}"></td>
+	            <td th:text="@{|${itm.discount * 100}%|}"></td>
+	            <td th:text="${itm.quantity}"></td>
+	            <td th:text="@{|${#numbers.formatDecimal(itm.unitPrice*itm.quantity*(1-itm.discount), 0, 2)}đ|}"></td>
+	        </tr>
+	    </tbody>
+	</table>
+</div>

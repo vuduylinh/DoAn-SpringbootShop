@@ -19,6 +19,7 @@ import estore.repository.service.ProductService;
 //@RequestParam annotation được sử dụng để trích xuất dữ liệu từ query parameters
 //form parameters, và kể cả các tập tin từ request.
 import estore.repository.service.ShareService;
+import estore.service.mail.MailerService;
 
 @Controller
 public class ProductController {
@@ -99,10 +100,20 @@ public class ProductController {
 		@Autowired
 		ShareService shareService;
 		
+		@Autowired
+		MailerService mailerService;
+		
 		@ResponseBody
-		@RequestMapping("/product/share_send") // like
+		@RequestMapping("/product/share-send") // like
 		public void share(Model model,@RequestBody Share share) {
+			//save data
 			shareService.create(share);
+			
+			// send mail
+			mailerService.sendShare(share);
+			
+			
+			
 		}
 		
 		

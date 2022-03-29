@@ -1,0 +1,55 @@
+<html th:replace="/shared/layout::dynamic(~{::main})" xmlns:th="http://www.thymeleaf.org">
+<main>
+	<h3 class="alert alert-success">Chi tiết đơn hàng</h3>
+	<form th:object="${item}" action="/order/purchase" class="card" method="post">
+    	<div class="card-body">
+    		<div class="row mb-3">
+		        <div class="col">
+		            <label>Id</label>
+		            <input th:field="*{id}" class="form-control" readonly>
+		        </div>
+		        <div class="col">
+		            <label>Customer</label>
+		            <input th:field="*{account.username}" class="form-control" readonly>
+		        </div>
+		        <div class="col">
+		            <label>Order Date</label>
+		            <input th:field="*{orderDate}" class="form-control" readonly>
+		        </div>
+		        <div class="col">
+		            <label>Total Amount</label>
+		            <input th:field="*{amount}" class="form-control" readonly>
+		        </div>
+	        </div>
+	        <div class="row mb-3">
+		        <div class="col">
+		            <label>Recipient</label>
+		            <input th:field="*{recipient}" class="form-control" readonly>
+		        </div>
+		        <div class="col">
+		            <label>Mobile</label>
+		            <input th:field="*{mobile}" class="form-control" readonly>
+		        </div>
+		        <div class="col-4">
+		            <label>Ship Address</label>
+		            <input th:field="*{address}" class="form-control" readonly>
+		        </div>
+		        
+		         <div class="col-4">
+		            <label>Status</label>
+		            <input th:field="*{status.name}" class="form-control" readonly>
+		        </div>
+	        </div>
+	        <div class="mb-3">
+	            <label>Notes</label>
+	            <textarea th:field="*{notes}" class="form-control" rows="4" readonly></textarea>
+	        </div>
+	        <div th:replace="/order/order-lines"></div>
+	        
+        </div>
+        <div th:if="*{status.id == 0}" class="card-footer">
+            <a th:href="@{|/order/cancel/*{id}|}" class="btn btn-primary">Hủy Mua Hàng</a>
+        </div>
+    </form>
+</main>
+</html>		

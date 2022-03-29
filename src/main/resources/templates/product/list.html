@@ -16,15 +16,9 @@
 				<div class="text-end">
 					<div>
 						<del th:if="${p.discount > 0}" th:text="@{|${#numbers.formatDecimal(p.unitPrice, 0, 2)}đ|}"></del>
-						<i th:text="@{|${#numbers.formatDecimal(p.promotePrice, 0, 2)}đ|}"></i>
-							
+						<i th:text="@{|${#numbers.formatDecimal(p.promotePrice, 0, 2)}đ|}"></i>	
 					</div>
-					<!-- cart  -->
-					<button type="button" class="btn btn-sm btn-outline-secondary bx bxs-cart-add add-to-cart"></button>
-					<!-- Like  -->
-					<button type="button" class="btn btn-sm btn-outline-secondary bx bx-heart add-like"></button>
-					<!-- share  -->
-					<button type="button" class="btn btn-sm btn-outline-secondary bx bx-share bx-flip-horizontal add-share"></button>
+					<div th:replace="product/_item-actions"></div>
 				</div>
 			</div>
 		</div>

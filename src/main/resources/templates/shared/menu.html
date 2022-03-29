@@ -40,15 +40,24 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             <i class='bx bx-user'></i> My Account
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Link</a></li>
-                            <li><a class="dropdown-item" href="#">Another link</a></li>
-                            <li><a class="dropdown-item" href="#">A third link</a></li>
+                        <ul th:if="${#request.remoteUser == null}" class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/security/login/form">Đăng nhập</a></li>
+                            <li><a class="dropdown-item" href="/account/sign-up">Đăng ký</a></li>
+                            <li><a class="dropdown-item" href="/account/forgot">Quên mật khẩu</a></li>
+                        </ul>
+                        
+                         <ul th:unless="${#request.remoteUser == null}" class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                            <li><a class="dropdown-item" href="#">Trang cá nhân</a></li>
+                            <li><a class="dropdown-item" href="#">Danh sách đặt hàng</a></li>
+                            <li><a class="dropdown-item" href="#">Hàng đã mua</a></li>
+                             <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class='bx bx-cart-alt bx-tada bx-flip-horizontal' ></i> 15 items x $105
+                        <a class="nav-link" href="/cart/view">
+                            <i class='bx bx-cart-alt bx-tada bx-flip-horizontal' ></i> 
+                            <span id="cart-cnt">15</span> items x <span id="cart-amt">105</span>đ
                         </a>
                     </li>
                 </ul>

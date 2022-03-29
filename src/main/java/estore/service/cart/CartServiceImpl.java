@@ -11,7 +11,7 @@ import org.springframework.web.context.annotation.SessionScope;
 import estore.repository.Product;
 import estore.repository.ProductDAO;
 
-@SessionScope
+@SessionScope 
 @Service
 public class CartServiceImpl implements CartService {
 	@Autowired
@@ -25,14 +25,14 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public void add(Integer id) {
-		CartItem item = map.get(id);
-		if(item == null) {
+	public void add(Integer id) { // đưa id vào
+		CartItem item = map.get(id); // vào trong map lấy id của mh đó
+		if(item == null) { // nếu item = null thì lấy data từ db
 			Product product = dao.getById(id);
 			item = new CartItem(product, 1);
-			map.put(id, item);
+			map.put(id, item); // sau đó bỏ vào map vs sl = 1
 		} else {
-			item.increase();
+			item.increase(); // tăng số lượng lên 1
 		}
 	}
 
@@ -51,4 +51,17 @@ public class CartServiceImpl implements CartService {
 	public void clear() {
 		map.clear();
 	}
+	
+	public int getCount() {
+		return this.getItems().stream() //
+			.mapToInt(item -> item.getQty())
+			.sum();
+	}
+	
+	public double getAmount() {
+		return this.getItems().stream() // duyệt qua từng items
+			.mapToDouble(item -> item.getAmount()) // cộng tộng số lượng
+			.sum();
+	}
+	
 }

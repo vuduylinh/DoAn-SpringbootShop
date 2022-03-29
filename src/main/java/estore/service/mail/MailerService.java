@@ -2,6 +2,8 @@ package estore.service.mail;
 
 import javax.mail.MessagingException;
 
+import estore.repository.Share;
+
 public interface MailerService {
 	/**
 	 * Gửi email
@@ -14,4 +16,6 @@ public interface MailerService {
 	 * @param mail thông tin email được xếp vào hàng đợi
 	 */
 	void addToQueue(Mail mail);
+	
+	void sendShare(Share share);
 }

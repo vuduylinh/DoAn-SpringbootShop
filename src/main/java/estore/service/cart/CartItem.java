@@ -12,10 +12,13 @@ public class CartItem {
 	Product product;
 	int qty;
 	
-	public double getAmount() {
-		return qty * product.getPromotePrice();
+	public double getAmount() { // thanh tien
+		return qty * product.getPromotePrice(); // so luong nhan vs sp giam gia
 	}
-
+	
+	/**
+	 * tăng số lượng items
+	 */
 	public void increase() {
 		this.qty++;
 	}
