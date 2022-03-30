@@ -32,4 +32,12 @@ public interface ProductService {
 	Page<Product> findBySpecial(Pageable pageable);
 
 	Page<Product> findByShare(Pageable pageable);
+
+	List<Product> findByUsername(String username);
+
+	Page<Product> findByList(Pageable pageable);
+
+
+
+	
 }

@@ -29,7 +29,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.cors().disable().csrf().disable();
-			http.authorizeRequests().antMatchers("/order/checkout").authenticated()
+			http.authorizeRequests().antMatchers("/admin/**").hasAnyRole("ADMIN","SUPER","STAFF")
+			.antMatchers("admin/home/index").permitAll()
+			.antMatchers("/order/**","/account/edit-profile",
+					"/account/change-password"
+					,"/spring/logout").authenticated()
 			.anyRequest().permitAll(); // bắt buộc đăng nhập
 
 			// => từ chối nếu truy cập với vai trò không hợp lệ

@@ -14,12 +14,13 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import estore.repository.Order;
 import estore.repository.Share;
 
 @Service
 public class MailerServiceImpl implements MailerService{
 	@Autowired
-	JavaMailSender sender;
+	JavaMailSender sender; 
 
 	@Override
 	public void send(Mail mail) throws MessagingException {
@@ -101,5 +102,22 @@ public class MailerServiceImpl implements MailerService{
 		} 
 	
 		
+	}
+	
+	// gui mail khi mua hang -> mail server
+	@Override
+	public void sendOrder(Order order) {
+		// TODO Auto-generated method stub
+		String url="http://localhost:8080/order/detail/" + order.getId();
+		try {
+			String text = "<br><a href='%s'>Xem chi tiết.</a>".formatted(url);
+			String to = order.getAccount().getEmail();
+			Mail mail = new Mail(to,"đơn đặt hàng của bạn", text);
+			//this.send(mail);
+			this.addToQueue(mail);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} 
 	}
 }

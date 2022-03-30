@@ -26,13 +26,14 @@
 </head>
 
 <body>
-    <header id="headB" class="container-fluid">
+	
+    <header id="headB" class="container">
         <div th:replace="/shared/header"></div>
     </header>
     <nav>
         <nav th:replace="/shared/menu"></nav>
     </nav>
-    <div class="container-fluid">
+    <div class="container p-1" style="background-color: rgb(240, 239, 238)">
         <main class="row mt-3">
          	<aside class="col-2">
                 <div th:replace="/shared/aside"></div>
@@ -44,6 +45,7 @@
            
         </main>
     </div>
+    
     <footer class="mt-5 bg-dark">
         <div th:replace="/shared/footer"></div>
     </footer>

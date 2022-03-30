@@ -36,5 +36,13 @@ $(document).ready(function(){
             $("#share-dialog").modal('hiden')
           });
            console.log(form)
-        });   
+        }); 
+        
+        $("#logout").on("click", function(){
+        	  alert("Đăng xuất thành công!")
+        });
+        
+         $('a').click( function() {
+   			 $(this).css('background', 'gray')
+  		});
 });

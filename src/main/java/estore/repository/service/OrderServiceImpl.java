@@ -62,4 +62,10 @@ public class OrderServiceImpl implements OrderService {
 		}).collect(Collectors.toList());
 		ddao.saveAll(list); // insert nhieu bang ghi vao trong orderDetails
 	}
+
+	@Override
+	public List<Order> findByUsername(String username) {
+			
+		return dao.findByUsername(username);
+	}
 }

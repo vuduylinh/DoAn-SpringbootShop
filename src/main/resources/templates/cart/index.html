@@ -1,7 +1,7 @@
 <html th:replace="/shared/layout::dynamic(~{::main})" xmlns:th="http://www.thymeleaf.org">
 <main>
 	<h4 class="alert alert-success">Các Sản Mặt Hàng đã chọn</h4>
-	<table th:fragment="scart" class="table">
+	<table th:fragment="scart" class="table" style="background: white">
 		<thead>
 			<tr>
 				<th>Mã</th>
@@ -26,9 +26,10 @@
 					<td th:text="*{discount}"></td>
 					<!-- <td th:text="${item.qty}"></td> -->
 					<td>
-						<input th:value="${item.qty}" class="qty-cart-update form-control" type="number" min="1" style="width: 70px;">
+						<input th:value="${item.qty}" class="qty-cart-update" type="number" min="1" style="width: 70px;">
 					</td>
-					<td class="item-amount" th:text="${item.qty * item.product.promotePrice}"></td>
+					<td class="item-amount" th:text="@{|${#numbers.formatDecimal(item.qty * item.product.promotePrice, 0, 2)}đ|}"></td>
+									
 					<td>
 						<button class="btn btn-sm btn-danger remove-from-cart">
 								<i class='bx bx-trash'></i>

@@ -1,5 +1,7 @@
 package estore.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -34,5 +36,17 @@ public interface ProductDAO extends JpaRepository<Product, Integer>{
 
 	@Query("SELECT o FROM Product o WHERE o.shares IS NOT EMPTY ORDER BY size(o.shares) DESC") // tìm ra sp share nhiều
 	Page<Product> findByShare(Pageable pageable);
+
+	
+	// lay ra danh sach san pham đã mua của user
+	@Query("SELECT DISTINCT o.product FROM OrderDetail o WHERE o.order.account.username=?1")
+	List<Product> findByUsername(String username);
+
+	@Query("SELECT o FROM Product o")
+	Page<Product> findByList(Pageable pageable);
+
+
+
+
 	
 }

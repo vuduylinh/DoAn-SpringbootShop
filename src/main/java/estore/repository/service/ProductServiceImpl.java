@@ -80,4 +80,17 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		return dao.findByShare(pageable);
 	}
+
+	@Override
+	public List<Product> findByUsername(String username) {
+		
+		return dao.findByUsername(username);
+	}
+
+	@Override
+	public Page<Product> findByList(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return dao.findByList(pageable);
+	}
+
 }

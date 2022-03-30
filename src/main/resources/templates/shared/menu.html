@@ -1,7 +1,7 @@
 <div xmlns:th="http://www.thymeleaf.org">
-    <nav class="navbar navbar-expand-sm  navbar-light sticky-top shadow-sm bg-body rounded">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/home/index"><i class='bx bx-home bx-flip-horizontal' ></i></a>
+    <nav class="container navbar navbar-expand-sm  navbar-light sticky-top shadow bg-body rounded">
+        <div class="container">
+            <a class="navbar-brand" href="/home/index"> <i class='bx bxs-home-circle bx-tada'></i> </a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#hmenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -38,26 +38,27 @@
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            <i class='bx bx-user'></i> My Account
+                            <i class='bx bx-user'></i>
+                            <span th:text="${#request.remoteUser == null ? 'Tài khoản': #request.remoteUser }"></span>
                         </a>
                         <ul th:if="${#request.remoteUser == null}" class="dropdown-menu">
                             <li><a class="dropdown-item" href="/security/login/form">Đăng nhập</a></li>
                             <li><a class="dropdown-item" href="/account/sign-up">Đăng ký</a></li>
-                            <li><a class="dropdown-item" href="/account/forgot">Quên mật khẩu</a></li>
+                            <li><a class="dropdown-item" href="/account/forgot-password">Quên mật khẩu</a></li>
                         </ul>
                         
                          <ul th:unless="${#request.remoteUser == null}" class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
-                            <li><a class="dropdown-item" href="#">Trang cá nhân</a></li>
-                            <li><a class="dropdown-item" href="#">Danh sách đặt hàng</a></li>
-                            <li><a class="dropdown-item" href="#">Hàng đã mua</a></li>
-                             <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+                            <li><a class="dropdown-item" href="/account/change-password">Đổi mật khẩu</a></li>
+                            <li><a class="dropdown-item" href="/account/edit-profile">Chỉnh sửa tài khoản</a></li>
+                            <li><a class="dropdown-item" href="/order/list">Danh sách đặt hàng</a></li>
+                            <li><a class="dropdown-item" href="/order/items-purchased">Hàng đã mua</a></li>
+                             <li><a class="dropdown-item" id="logout" href="/spring/logout">Đăng xuất</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/cart/view">
                             <i class='bx bx-cart-alt bx-tada bx-flip-horizontal' ></i> 
-                            <span id="cart-cnt">15</span> items x <span id="cart-amt">105</span>đ
+                            <span id="cart-cnt">0</span> SP x <span id="cart-amt">00</span>đ
                         </a>
                     </li>
                 </ul>

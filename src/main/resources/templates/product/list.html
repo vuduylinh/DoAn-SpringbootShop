@@ -3,12 +3,12 @@
 	<h4>SẢN PHẨM</h4>
 	<hr>
 	<div class="row">
-		<div th:each="p: ${list}" class="col-sm-3 CartProduct" >
-			<div class="card p-3 mb-3 shadow" th:attr="data-id=${p.id}" > <!-- data-id="${p.id}" -->
+		<div  th:each="p: ${list}" class="col-sm-3 CartProduct" >
+			<div th:fragment="pbox" class="card p-3 mb-3 shadow" th:attr="data-id=${p.id}" > <!-- data-id="${p.id}" -->
 				<div class="">
 					<div th:text="${p.name}"></div>
 				</div>
-				<div class="card-body text-center pt-3" style="height: 250px">
+				<div class="card-body text-center pt-5" style="height: 250px">
 					<a th:href="@{|/product/detail/${p.id}|}"> <!-- gọi đến trang detail -->
 							<img th:src="@{|/images/items/${p.image}|}" style="height: 80%; max-width: 100%" alt="ảnh sản phẩm" >
 					</a>
@@ -18,7 +18,9 @@
 						<del th:if="${p.discount > 0}" th:text="@{|${#numbers.formatDecimal(p.unitPrice, 0, 2)}đ|}"></del>
 						<i th:text="@{|${#numbers.formatDecimal(p.promotePrice, 0, 2)}đ|}"></i>	
 					</div>
+					<!-- button action -->
 					<div th:replace="product/_item-actions"></div>
+					
 				</div>
 			</div>
 		</div>

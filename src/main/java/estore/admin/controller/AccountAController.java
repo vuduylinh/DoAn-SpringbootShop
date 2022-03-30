@@ -83,7 +83,7 @@ public class AccountAController {
 			item.setPhoto(photo.getName());
 		}
 		accountService.create(item, roleIds.orElse(List.of()));
-		model.addAttribute("message", "Create successfully!");
+		model.addAttribute("message", "Tạo thành công!");
 		model.addAttribute("edit", true);
 		return this.forward(model);
 	}
@@ -98,7 +98,7 @@ public class AccountAController {
 			item.setPhoto(photo.getName());
 		}
 		accountService.update(item, roleIds.orElse(List.of()));
-		model.addAttribute("message", "Update successfully!");
+		model.addAttribute("message", "Cập nhật thành công!");
 		model.addAttribute("edit", true);
 		return this.forward(model);
 	}
@@ -106,7 +106,7 @@ public class AccountAController {
 	@RequestMapping("/admin/account/delete/{id}")
 	public String delete(Model model, @PathVariable("id") String username) {
 		accountService.deleteByUsername(username);
-		model.addAttribute("message", "Delete successfully!");
+		model.addAttribute("message", "Xóa thành công!");
 		
 		model.addAttribute("item", new Account());
 		model.addAttribute("edit", false);

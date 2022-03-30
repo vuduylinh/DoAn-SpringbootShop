@@ -1,0 +1,39 @@
+<html th:replace="/shared/layout::dynamic(~{::main})" xmlns:th="http://www.thymeleaf.org">
+<main>
+	<h4>DANH SÁCH MẶT HÀNG ĐÃ ĐẶT</h4>
+	<hr>
+	
+	<div class="card shadow">
+		<table class="table">
+	    <thead>
+	        <tr>
+	            <th>No.</th>
+	            <th>Id</th>
+	            <th>Customer</th>
+	            <th>Mobile</th>
+	            <th>Address</th>
+	            <th>Date</th>
+	            <th>Amount</th>
+	            <th></th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr th:each="itm, st : ${list}">
+	            <td th:text="${st.count}"></td>
+	            <td th:text="${itm.id}"></td>
+	            <td th:text="${itm.account.fullname}"></td>
+	            <td th:text="${itm.mobile}"></td>
+	            <td th:text="${itm.address}"></td>
+	            <td th:text="${itm.orderDate}"></td>
+	            <td th:text="@{|${#numbers.formatDecimal(itm.amount, 0, 2)}đ|}"></td>
+	            <td>
+	               <a class="btn btn-sm btn-outline-info" th:href="@{|/order/detail/${itm.id}|}">Chi tiết</a>
+	            </td>
+	        </tr>
+	    </tbody>
+	</table>
+</div>
+	
+</main>
+
+</html>

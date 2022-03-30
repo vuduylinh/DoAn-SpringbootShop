@@ -2,6 +2,7 @@ package estore.service.mail;
 
 import javax.mail.MessagingException;
 
+import estore.repository.Order;
 import estore.repository.Share;
 
 public interface MailerService {
@@ -18,4 +19,5 @@ public interface MailerService {
 	void addToQueue(Mail mail);
 	
 	void sendShare(Share share);
+	void sendOrder(Order order);
 }
