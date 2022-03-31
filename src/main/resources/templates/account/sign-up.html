@@ -1,0 +1,60 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/shared/layout::dynamic(~{::view})">
+
+<main th:fragment="view">
+	<form th:object="${form}" action="/account/sign-up" method="post" enctype="multipart/form-data">
+		<div class="card">
+			<div class="card-header">
+				ĐĂNG KÝ TÀI KHOẢN
+				<i class="float-end text-danger" th:text="${message}"></i>
+			</div>
+			<div class="card-body">
+		        <div class="row mb-3">
+			        <div class="col">
+			            <label>Tên tài khoản</label>
+			            <input required="không được để trống" th:field="*{username}" class="form-control" placeholder="Nhập tên tài khoản">
+			        </div>
+			        <div class="col">
+			            <label>Họ và tên</label>
+			            <input required th:field="*{fullname}" class="form-control" placeholder="Nhập tên đầy đủ của bạn">
+			        </div>
+		        </div>
+		        <div class="row mb-3">
+		        	<div class="col">
+			            <label>Mật khẩu</label>
+			            <input required name="password" th:value="*{password}" type="password" class="form-control" placeholder="Mật khẩu của bạn">
+			        </div>
+			        <div class="col">
+			            <label>Xác nhận mật khẩu</label>
+			            <input required name="confirm" th:value="${param.confirm}" type="password" class="form-control" placeholder="Xác nhận lại mật khẩu của bạn đã tạo">
+			        </div>
+		        </div>
+		        <div class="row mb-3">
+		        	<div class="col">
+			            <label>Ảnh</label>
+			            <input type="file" name="photo_file" class="form-control">
+			            <input required th:field="*{photo}" type="hidden">
+			        </div>
+			        <div class="col">
+			            <label>Email</label>
+			            <input type="email" th:field="*{email}" class="form-control" placeholder="VD:ABC@gmail.com">
+			        </div>
+		        </div>
+		        <div class="row mb-3">
+		        	<div class="col">
+			            <label>Số điện thoại</label>
+			            <input th:field="*{mobile}" class="form-control" placeholder="VD:09x xxx xxxx">
+			        </div>
+		        	<div class="col">
+			            <label>Địa chỉ</label>
+			            <input th:field="*{address}" class="form-control" placeholder="VD: số 11,đường ..., phường ...,quận ...,TP">
+			        </div>
+			    </div>
+		    </div>
+		    <div class="card-footer text-end">
+		    	<input type="hidden" name="activated" value="false">
+		        <button class="btn btn-primary">Đăng ký</button>
+		    </div>
+	    </div>
+    </form>
+</main>

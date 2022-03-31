@@ -25,7 +25,7 @@ import estore.service.mail.MailerService;
 public class ProductController {
 		@Autowired
 		ProductService productService; 
-		
+		//tìm các sản phẩm theo loại
 		@RequestMapping("/product/category/{id}")
 		public String category(Model model,@PathVariable("id") Integer id) {
 			Page<Product> page = productService.findByCategoryId(id, Pageable.unpaged());//tìm các sản phẩm theo loại
@@ -109,7 +109,7 @@ public class ProductController {
 			//save data
 			shareService.create(share);
 			
-			// send mail
+			// send mail chức năng share hàng hóa
 			mailerService.sendShare(share);
 			
 			

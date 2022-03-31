@@ -19,5 +19,7 @@ public interface AccountService {
 	void create(Account item, List<String> roleIds);
 
 	void update(Account item, List<String> roleIds);
+
+	boolean existByUsername(String username);
 	
 }

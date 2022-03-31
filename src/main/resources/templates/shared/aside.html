@@ -3,33 +3,11 @@
         <div class="card-header fw-bold">DANH MỤC <i class='bx bx-category bx-tada bx-rotate-90'></i></div>
         <div class="list-group list-group-flush">
 	         <th:block th:each="c :${categories}">
-	        	<a th:text="${c.nameVn}" th:href="@{|/product/category/${c.id}|}" class="list-group-item list-group-item-action"></a>
+	        	<a th:href="@{|/product/category/${c.id}|}" class="list-group-item list-group-item-action">
+	        		<span th:text="${c.nameVn}"></span>
+	        		<span class="badge rounded-pill bg-secondary float-end" th:text="${c.products.size()}"></span>
+	        	</a>	
 	        </th:block> 
-                      <!--   <a class="list-group-item list-group-item-action nav-link "  href="/product/discount">Khuyến mại</a>
-                    
-                   
-                        <a class="list-group-item list-group-item-action nav-link " href="/product/latest">Hàng mới</a>
-                   
-                  
-                        <a class="list-group-item list-group-item-action nav-link " href="/product/favorite">Yêu thích</a>
-                  
-                     
-                         <a class="list-group-item list-group-item-action nav-link " href="/product/best">Bán chạy</a>
-                   
-                  
-                        <a class="list-group-item list-group-item-action nav-link " href="/product/special">Đăc biệt</a>
-                   
-                     
-                        <a class="list-group-item list-group-item-action nav-link " href="/product/share">Chia sẽ nhiều</a>
-                     -->
         </div>
     </div>
-    <!-- <div class="card mb-3">
-        <div class="card-header">DEMO</div>
-        <div class="list-group list-group-flush">
-            <a href="#" class="list-group-item list-group-item-action">First item</a>
-            <a href="#" class="list-group-item list-group-item-action">Second item</a>
-            <a href="#" class="list-group-item list-group-item-action">Third item</a>
-        </div>
-    </div> -->
 </div>

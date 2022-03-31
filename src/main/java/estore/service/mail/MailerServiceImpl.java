@@ -14,6 +14,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import estore.repository.Account;
 import estore.repository.Order;
 import estore.repository.Share;
 
@@ -112,9 +113,43 @@ public class MailerServiceImpl implements MailerService{
 		try {
 			String text = "<br><a href='%s'>Xem chi tiết.</a>".formatted(url);
 			String to = order.getAccount().getEmail();
-			Mail mail = new Mail(to,"đơn đặt hàng của bạn", text);
+			Mail mail = new Mail(to,"Đơn đặt hàng của bạn", text); 
 			//this.send(mail);
 			this.addToQueue(mail);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} 
+	}
+
+	@Override
+	public void sendWelcome(Account account) {
+		// TODO Auto-generated method stub
+		String url="http://localhost:8080/account/activate/" + account.getUsername();
+		try {
+			String text = "<br><a href='%s'>Nhấn vào để kích hoạt tài khoản.</a>".formatted(url);
+			String to = account.getEmail();
+			
+			 // tiêu đề email
+			Mail mail = new Mail(to,"Chào mừng bạn đến với website bán hàng E-store", text);
+			//this.send(mail);
+			this.addToQueue(mail); // gửi email tới người dùng.
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} 
+	}
+
+	@Override
+	public void sendToken(String token, String email) {
+		// TODO Auto-generated method stub
+		try {
+			
+			String text = "Mã xác nhận của bạn: <b> %s </b>".formatted(token);
+			//tiêu đề mail
+			Mail mail = new Mail(email, "THÔNG BÁO NHẬN MÃ XÁC NHẬN", text);
+			//this.send(mail);
+			this.addToQueue(mail); // gửi email tới người dùng.
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

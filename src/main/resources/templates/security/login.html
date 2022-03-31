@@ -1,24 +1,36 @@
 <html th:replace="/shared/layout::dynamic(~{::main})" xmlns:th="http://www.thymeleaf.org">
 <main>
-	<h4 class="alert alert-success">ĐĂNG NHẬP</h4>
-	<form action="/spring/login" method="post">
-			<i th:text="${message}"></i>
-			<div class="mb-3">
-					<label for="">Tên đăng nhập</label>
-					<input name="username" class="form-control" >
-			</div>
-			<div class="mb-3">
-				<label for="">Mật khẩu</label>
-				<input name="password" class="form-control" >
-			</div>
-			<div class="mb-3">
-				<input name="remember-me" type="radio" id="check" style="cursor: pointer;">
-				<label for="check" style="cursor: pointer;">nhớ tài khoản?</label>
-			</div>
-
-			<div class="mb-3">
-					<button class="btn btn-primary">Đăng nhập</button>
-			</div>
+	<div class="row justify-content-center">
+		<form action="/spring/login" method="post" class="col-6" >
+			<div class="card rounded shadow">
+				<div class="card-header bg-dark text-white">
+						<b>ĐĂNG NHẬP</b>
+						<i th:text="${message}" class="float-end text-warning"></i>
+				</div>
+				<div class="card-body">
+					<div class="mb-3">
+						<label for=""><i class='bx bxs-user' ></i> Tên đăng nhập</label>
+						<input name="username" class="form-control" placeholder="nhập tên tài khỏa ..." >
+					</div>
+					<div class="mb-3">
+						<label for=""> <i class='bx bxs-lock'></i> Mật khẩu</label>
+						<input name="password" class="form-control" placeholder="nhập mật khẩu ...">
+					</div>
+					<div class="mb-3 form-check form-switch">
+						<input class="form-check-input" name="remember-me" type="checkbox" id="check" style="cursor: pointer;" checked="checked">
+						<label for="check" style="cursor: pointer;">nhớ tài khoản</label>
+					</div>
+				</div>
+				<div class="card-footer">
+					<div class="mb-3 float-end">
+						<button class="btn btn-primary">Đăng nhập</button>
+					</div>
+				
+				</div>
+			</div>		
 	</form>
+	
+	</div>
+	
 </main>
 </html>

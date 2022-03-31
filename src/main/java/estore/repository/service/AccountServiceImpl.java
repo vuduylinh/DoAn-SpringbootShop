@@ -92,4 +92,10 @@ public class AccountServiceImpl implements AccountService {
 		}
 		return dao.findMasterByKeywordAndActivated(keyword, filter.getActivated() == 1, pageable);
 	}
+
+	@Override
+	public boolean existByUsername(String username) {
+		// TODO Auto-generated method stub
+		return dao.existsById(username);
+	}
 }

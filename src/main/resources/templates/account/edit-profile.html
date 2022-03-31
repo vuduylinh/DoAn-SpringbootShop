@@ -1,0 +1,51 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/shared/layout::dynamic(~{::view})">
+
+<main th:fragment="view">
+	<form th:object="${form}" action="/account/edit-profile" method="post" enctype="multipart/form-data">
+		<div class="card">
+			<div class="card-header">
+				Chỉnh Sửa Thông Tin Cá Nhân
+				<i class="float-end text-danger" th:text="${message}"></i>
+			</div>
+			<div class="card-body">
+		        <div class="row mb-3">
+			        <div class="col">
+			            <label>Tên đăng nhập</label>
+			            <input th:field="*{username}" readonly class="form-control">
+			        </div>
+			        <div class="col">
+			            <label>Họ và Tên</label>
+			            <input th:field="*{fullname}" class="form-control">
+			        </div>
+		        </div>
+		        <div class="row mb-3">
+		        	<div class="col">
+			            <label>Ảnh</label>
+			            <input type="file" name="photo_file" class="form-control">
+			            <input  th:field="*{photo}" type="hidden">
+			        </div>
+			        <div class="col">
+			            <label>Email</label>
+			            <input th:field="*{email}" class="form-control">
+			        </div>
+		        </div>
+		        <div class="row mb-3">
+		        	<div class="col">
+			            <label>Số điện thoại</label>
+			            <input th:field="*{mobile}" class="form-control">
+			        </div>
+		        	<div class="col">
+			            <label>Địa chỉ</label>
+			            <input th:field="*{address}" class="form-control">
+			        </div>
+			    </div>
+		    </div>
+		    <div class="card-footer text-end">
+		    	<input th:field="*{activated}" type="hidden">
+		    	<input th:field="*{password}" type="hidden">
+		        <button class="btn btn-primary">Câp nhật</button>
+		    </div>
+	    </div>
+    </form>
+</main>
