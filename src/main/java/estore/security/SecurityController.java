@@ -14,7 +14,7 @@ public class SecurityController {
 	@RequestMapping("/security/login/success")
 	public String loginSuccess(Model model) {
 		model.addAttribute("message", "Đăng nhập thành công!");
-		return "forward:/security/login/form";
+		return "forward:/home/index";
 	}
 	
 	@RequestMapping("/security/login/failure")

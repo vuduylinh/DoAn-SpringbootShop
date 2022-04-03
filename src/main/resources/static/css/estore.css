@@ -1,7 +1,12 @@
 .CartProduct:hover{
     margin-top: -5px;
     transition: 0.5s;
+  
     cursor: pointer;
+}
+#hover-border:hover{
+  border-color: coral;
+/*   opacity: 0.9; */
 }
 .bxs-home:hover {
 	color:gray;
@@ -12,4 +17,7 @@
 .bx-receipt{
 	margin-top:3px;
 	font-size: 20px;
+}
+.A-SP-CL{
+	text-decoration: none;
 }

@@ -31,20 +31,24 @@ public class HomeController {
 	@Autowired
 	SessionService sessionService;
 	
-//	@RequestMapping("/home/index")
-//	public String index(Model model) {
-//	//	Page<Product> listnew = productService.findByLatest(PageRequest.of(0, 8)); phan trang
-//		List<Product> listnew = productService.findAll();
-//		model.addAttribute("listNew", listnew);
-////		Pageable pageable = PageRequest.of(0, 4, Direction.DESC, "discount");
-////		List<Product> prom = productService.findByDiscount(pageable).getContent();
-////		model.addAttribute("prom", prom);
-//		return "home/index";
-//	}
+	/*
+	 * @RequestMapping("/home/index") public String Poster(Model model) { // lấy ra
+	 * sp mới nhất Page<Product> latest =
+	 * productService.findByLatest(PageRequest.of(0, 4));// phan trang //
+	 * List<Product> listnew = productService.findAll();
+	 * model.addAttribute("listNew", latest);
+	 * 
+	 * // lấy ra sp giảm giá Pageable pageable = PageRequest.of(0, 4,
+	 * Direction.DESC, "discount"); List<Product> prom =
+	 * productService.findByDiscount(pageable).getContent();
+	 * model.addAttribute("prom", prom); return "home/index"; }
+	 */
+	
+	
 	@RequestMapping("/home/index/paginate/{pageNumber}")
 	public String paginate(Model model, @PathVariable("pageNumber") Integer pageNumber) {
 		sessionService.set("pageNumber", pageNumber);
-//		model.addAttribute("edit", false);
+//		model.addAttribute("?", false);
 		return "forward:/home/index";
 	}
 	
@@ -59,6 +63,16 @@ public class HomeController {
 		Pageable pageable = PageRequest.of(pageNumber, 12);
 		Page<Product> page = productService.findByList(pageable);
 		model.addAttribute("page", page);
+		
+		// lấy ra sp mới nhất
+		Page<Product> latest = productService.findByLatest(PageRequest.of(0, 4));// phan trang
+//		List<Product> listnew = productService.findAll();
+		model.addAttribute("listNew", latest);
+		
+		// lấy ra sp giảm giá
+		pageable = PageRequest.of(0, 4, Direction.DESC, "discount");
+		List<Product> prom = productService.findByDiscount(pageable).getContent();
+		model.addAttribute("prom", prom);
 		return "/home/index";
 	}
 	

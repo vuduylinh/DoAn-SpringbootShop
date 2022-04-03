@@ -12,39 +12,39 @@
 	    
     		<div class="row mb-3">
 		        <div class="col">
-		            <label>Id</label>
+		            <label>Mã</label>
 		            <input th:field="*{id}" class="form-control" placeholder="Auto Number" readonly>
 		        </div>
 		        <div class="col">
-		            <label>Customer</label>
-		            <input th:field="*{account.username}" class="form-control" readonly>
+		            <label>Khách hàng</label>
+		            <input th:field="*{account.fullname}" class="form-control" readonly>
 		        </div>
 		        <div class="col">
-		            <label>Order Date</label>
+		            <label>Ngày đặt</label>
 		            <input th:field="*{orderDate}" class="form-control" readonly>
 		        </div>
 		        <div class="col">
-		            <label>Total Amount</label>
+		            <label>Tổng giá</label>
 		            <input th:field="*{amount}" class="form-control" readonly>
 		        </div>
 	        </div>
 	        <div class="row mb-3">
 		        <div class="col">
-		            <label>Recipient</label>
+		            <label>Người nhận</label>
 		            <input th:field="*{recipient}" class="form-control">
 		        </div>
 		        <div class="col">
-		            <label>Mobile</label>
+		            <label>Số điện thoại</label>
 		            <input th:field="*{mobile}" class="form-control">
 		        </div>
 		        <div class="col-4">
-		            <label>Ship Address</label>
+		            <label>Địa chỉ giao hàng</label>
 		            <input th:field="*{address}" class="form-control">
 		        </div>
 		        <input type="hidden" value="0" name="status.id">
 	        </div>
 	        <div class="mb-3">
-	            <label>Notes</label>
+	            <label>Ghi chú</label>
 	            <textarea th:field="*{notes}" class="form-control" rows="4"></textarea>
 	        </div>
 	        

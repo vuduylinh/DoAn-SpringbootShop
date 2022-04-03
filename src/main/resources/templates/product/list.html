@@ -4,7 +4,7 @@
 	<hr>
 	<div class="row">
 		<div  th:each="p: ${list}" class="col-sm-3 CartProduct" >
-			<div th:fragment="pbox" class="card p-3 mb-3 shadow" th:attr="data-id=${p.id}" > <!-- data-id="${p.id}" -->
+			<div th:fragment="pbox" class="card p-3 mb-3 shadow" id="hover-border" th:attr="data-id=${p.id}" > <!-- data-id="${p.id}" -->
 				<div class="">
 					<div th:text="${p.name}"></div>
 				</div>

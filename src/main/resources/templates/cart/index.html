@@ -22,8 +22,8 @@
 						<img th:src="@{|/images/items/${item.product.image}|}" style="max-width: 60px" alt="ảnh sản phẩm" >
 					</td>
 					<td th:text="*{name}"></td>
-					<td th:text="*{unitPrice}"></td>
-					<td th:text="*{discount}"></td>
+					<td th:text="@{|*{unitPrice} đ|}"></td>
+					<td th:text="@{|*{discount} %|}"></td>
 					<!-- <td th:text="${item.qty}"></td> -->
 					<td>
 						<input th:value="${item.qty}" class="qty-cart-update" type="number" min="1" style="width: 70px;">
@@ -41,12 +41,12 @@
 		</tbody>
 	</table>
 	<div class="text-end">
-			<a href="/cart/clear" class="btn btn-sm btn-danger text-end clear-cart">
+			<a href="/cart/clear" class="btn btn-sm btn-danger text-end clear-cart" id="clearCart">
 				Xóa tất cả
 			</a>
 			
 			<a href="/order/checkout" class="btn btn-sm btn-primary text-end">
-				Thanh toán
+				Tiếp tục
 			</a>
 	
 	</div>

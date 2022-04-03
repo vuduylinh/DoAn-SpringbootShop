@@ -6,15 +6,15 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="hmenu">
-            		<!-- <ul class="navbar-nav me-auto">
+                <!-- <ul class="navbar-nav me-auto">
                     <li  th:each="c :${categories}" class="nav-item">
                         <a class="nav-link Menu_a" th:text="${c.nameVn}" th:href="@{|/product/category/${c.id}|}"></a>
                     </li>
                     </ul> -->
-            
-                 <ul class="navbar-nav me-auto">
+
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link Menu_a"  href="/product/discount">Khuyến mại</a>
+                        <a class="nav-link Menu_a" href="/product/discount">Khuyến mại</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link Menu_a" href="/product/latest">Hàng mới</a>
@@ -22,19 +22,22 @@
                     <li class="nav-item">
                         <a class="nav-link Menu_a" href="/product/favorite">Yêu thích</a>
                     </li>
-                     <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link Menu_a" href="/product/special">Đăc biệt</a>
                     </li>
-                     <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link Menu_a" href="/product/share">Chia sẽ nhiều</a>
                     </li>
-                </ul> 
+                </ul>
+                
                 <!-- form search -->
                 <form class="navbar-nav" action="/product/search" method="post">
-			        <input th:value="${param.keywords}" class="form-control me-2" name="keywords" type="text" placeholder="nhập từ khóa...">
-			        <button class="btn btn-primary" type="submit"><i class='bx bx-search-alt bx-tada' ></i></button>
-     			</form>
-     			<!-- /////////////////////////// -->
+                    <input th:value="${param.keywords}" class="form-control me-2" name="keywords" type="text"
+                        placeholder="nhập từ khóa...">
+                    <button class="btn btn-primary" type="submit"><i class='bx bx-search-alt bx-tada'></i></button>
+                </form>
+                
+                <!-- /////////////////////////// -->
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
@@ -46,18 +49,18 @@
                             <li><a class="dropdown-item" href="/account/sign-up">Đăng ký</a></li>
                             <li><a class="dropdown-item" href="/account/forgot-password">Quên mật khẩu</a></li>
                         </ul>
-                        
-                         <ul th:unless="${#request.remoteUser == null}" class="dropdown-menu">
+
+                        <ul th:unless="${#request.remoteUser == null}" class="dropdown-menu">
                             <li><a class="dropdown-item" href="/account/change-password">Đổi mật khẩu</a></li>
                             <li><a class="dropdown-item" href="/account/edit-profile">Chỉnh sửa tài khoản</a></li>
                             <li><a class="dropdown-item" href="/order/list">Danh sách đặt hàng</a></li>
                             <li><a class="dropdown-item" href="/order/items-purchased">Hàng đã mua</a></li>
-                             <li><a class="dropdown-item" id="logout" href="/spring/logout">Đăng xuất</a></li>
+                            <li><a class="dropdown-item" id="logout" href="/spring/logout">Đăng xuất</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/cart/view">
-                            <i class='bx bx-cart-alt bx-tada bx-flip-horizontal' ></i> 
+                            <i class='bx bx-cart-alt bx-tada bx-flip-horizontal'></i>
                             <span id="cart-cnt">0</span> SP x <span id="cart-amt">00</span>đ
                         </a>
                     </li>

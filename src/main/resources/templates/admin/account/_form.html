@@ -10,41 +10,41 @@
 				<div class="col-10">
 				<div class="row mb-3">
 			        <div class="col">
-			            <label>Username</label>
-			            <input th:field="*{username}" class="form-control">
+			            <label>Tên đăng nhập</label>
+			            <input th:field="*{username}" class="form-control" readonly="readonly">
 			        </div>
 			        <div class="col">
-			            <label>Password</label>
-			            <input name="password" th:value="*{password}" type="password" class="form-control">
+			            <label>Mật khẩu</label>
+			            <input name="password" th:value="*{password}" type="password" class="form-control" readonly="readonly">
 			        </div>
 			        <div class="col">
-			            <label>Fullname</label>
-			            <input th:field="*{fullname}" class="form-control">
+			            <label>Họ và Tên</label>
+			            <input th:field="*{fullname}" class="form-control" readonly="readonly">
 			        </div>
 		        </div>
 		        <div class="row mb-3">
 		        	<div class="col">
-			            <label>Photo</label>
+			            <label>Hình</label>
 			            <input type="file" name="photo_file" class="form-control">
 			            <input th:field="*{photo}" type="hidden">
 			        </div>
 			        <div class="col">
 			            <label>Email</label>
-			            <input th:field="*{email}" class="form-control">
+			            <input th:field="*{email}" class="form-control" readonly="readonly">
 			        </div>
 			        <div class="col">
-			            <label>Mobile</label>
-			            <input th:field="*{mobile}" class="form-control">
+			            <label>Số điện thoại</label>
+			            <input th:field="*{mobile}" class="form-control" readonly="readonly">
 			        </div>
 		        </div>
 		        
 		        <div class="row mb-3">
 		        	<div class="col">
-			            <label>Address</label>
-			            <input th:field="*{address}" class="form-control">
+			            <label>Địa chỉ</label>
+			            <input th:field="*{address}" class="form-control" readonly="readonly">
 			        </div>
 			        <div class="col">
-			            <label>Authorities</label>
+			            <label>Chức quyền</label>
 			            <div class="form-control d-flex">
 							<div th:each="r: ${roles}" class="form-check form-switch me-3">
 								<input th:value="${r.id}"  th:checked="${item.hasRole(r)}" th:id="${r.id}" name="roleIds" type="checkbox" class="form-check-input">
@@ -54,7 +54,7 @@
 			            </div>
 			        </div>
 			        <div class="col-2">
-			            <label>Activated?</label>
+			            <label>Trạng thái tài khoản?</label>
 			            <div class="form-control">
 			            	<label>
 			            		<input th:field="*{activated}" type="radio" th:value="true"> Yes

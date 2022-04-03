@@ -11,7 +11,7 @@ public interface ProductDAO extends JpaRepository<Product, Integer>{
 	@Query("SELECT o FROM Product o WHERE o.category.id=?1")
 	Page<Product> findByCategoryId(Integer cid, Pageable pageable);
 
-	
+	// chức năng tìm kiếm sản phẩm
 	@Query("SELECT o FROM Product o WHERE o.name LIKE ?1"
 			+ " OR o.category.name LIKE ?1"
 			+ " OR o.category.nameVn LIKE ?1") // LIKE ?1 -> LILE ?keywords
@@ -33,8 +33,8 @@ public interface ProductDAO extends JpaRepository<Product, Integer>{
 	@Query("SELECT o FROM Product o WHERE o.special=true") // tìm ra sp đặc biệt
 	Page<Product> findBySpecial(Pageable pageable);
 
-
-	@Query("SELECT o FROM Product o WHERE o.shares IS NOT EMPTY ORDER BY size(o.shares) DESC") // tìm ra sp share nhiều
+	 // tìm ra sp share nhiều
+	@Query("SELECT o FROM Product o WHERE o.shares IS NOT EMPTY ORDER BY size(o.shares) DESC")
 	Page<Product> findByShare(Pageable pageable);
 
 	
@@ -42,6 +42,7 @@ public interface ProductDAO extends JpaRepository<Product, Integer>{
 	@Query("SELECT DISTINCT o.product FROM OrderDetail o WHERE o.order.account.username=?1")
 	List<Product> findByUsername(String username);
 
+	// phân trang listProduct ở trang home/index
 	@Query("SELECT o FROM Product o")
 	Page<Product> findByList(Pageable pageable);
 

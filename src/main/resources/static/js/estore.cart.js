@@ -33,5 +33,9 @@ $(document).ready(function() {
         $(this).closest("[data-id]").find(".item-amount").html((price * qty).toFixed(2));
     });
     
+    $("#clearCart").on("click", function(){
+        if(!confirm("Bạn có muốn xóa hết không?"))
+        return false;
+    });
     
  });

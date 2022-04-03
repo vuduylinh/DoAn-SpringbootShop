@@ -4,7 +4,7 @@
 
 	<div th:fragment="view">
 	    <div class="alert alert-secondary">
-	    	<b><i class='bx bx-receipt'></i> ORDER MANAGEMENT</b>
+	    	<b><i class='bx bx-receipt'></i> QUẢN LÝ ĐƠN HÀNG</b>
 	    	<i class="float-end text-danger" th:text="${message}"></i>
 	    </div>
 	    
@@ -14,12 +14,12 @@
 	    <ul class="nav nav-tabs">
 	        <li class="nav-item">
 	            <a th:class="@{|nav-link ${edit?'active':''}|}" data-bs-toggle="tab" href="#edit">
-	            	<i class='bx bxs-edit'></i> EDIT ORDER
+	            	<i class='bx bxs-edit'></i> CHI TIẾT ĐƠN HÀNG
 	            </a>
 	        </li>
 	        <li class="nav-item">
 	            <a  th:class="@{|nav-link ${edit?'':'active'}|}" data-bs-toggle="tab" href="#list">
-	            	<i class='bx bx-list-ol'></i> LIST OF ORDERS
+	            	<i class='bx bx-list-ol'></i> DANH SÁCH ĐƠN HÀNG
 	            </a>
 	        </li>
 	    </ul>

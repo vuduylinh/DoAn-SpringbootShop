@@ -4,7 +4,7 @@
 
 	<div th:fragment="view">
 	    <div class="alert alert-secondary">
-	    	<b><i class='bx bx-gift'></i> PRODUCT MANAGEMENT</b>
+	    	<b><i class='bx bx-gift'></i> QUẢN LÝ SẢN PHẨM</b>
 	    	<i class="float-end text-danger" th:text="${message}"></i>
 	    </div>
 
@@ -14,12 +14,12 @@
 	    <ul class="nav nav-tabs">
 	        <li class="nav-item">
 	            <a th:class="@{|nav-link ${edit?'active':''}|}" data-bs-toggle="tab" href="#edit">
-	            	<i class='bx bxs-edit'></i> EDIT PRODUCT
+	            	<i class='bx bxs-edit'></i> SỈNH SỬA SẢN PHẨM
 	            </a>
 	        </li>
 	        <li class="nav-item">
 	            <a th:class="@{|nav-link ${edit?'':'active'}|}" data-bs-toggle="tab" href="#list">
-	            	<i class='bx bx-list-ol'></i> LIST OF PRODUCTS
+	            	<i class='bx bx-list-ol'></i> DANH SÁCH CÁC SẢN PHẨM
 	            </a>
 	        </li>
 	    </ul>

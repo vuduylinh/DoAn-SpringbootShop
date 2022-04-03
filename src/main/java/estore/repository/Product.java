@@ -31,7 +31,7 @@ public class Product {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Integer id;
 	String name;
-	String image = "new.png";
+	String image;
 	@Column(name = "unitprice")
 	double unitPrice;
 	double discount;

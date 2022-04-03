@@ -19,14 +19,14 @@ public interface ReportDAO extends JpaRepository<Order, Long>{
 			+ " WHERE o.shares IS NOT EMPTY")
 	List<Report> getTopShares(Pageable pageable);
 
-	@Query("SELECT o.category.name AS group,"
+	@Query("SELECT o.category.nameVn AS group,"
 			+ " SUM(o.quantity) AS count,"
 			+ " SUM(o.quantity * o.unitPrice) AS sum,"
 			+ " MIN(o.unitPrice) AS min, "
 			+ " MAX(o.unitPrice) AS max, "
 			+ " AVG(o.unitPrice) AS avg"
 			+ " FROM Product o "
-			+ " GROUP BY o.category.name")
+			+ " GROUP BY o.category.nameVn")
 	List<Report> getInventoryByCategory();
 
 	@Query("SELECT o.product.name AS group,"
@@ -39,14 +39,14 @@ public interface ReportDAO extends JpaRepository<Order, Long>{
 			+ " GROUP BY o.product.name") // truy van doanh so tung mặt hàng
 	List<Report> getRevenueByProduct();
 
-	@Query("SELECT o.product.category.name AS group,"
+	@Query("SELECT o.product.category.nameVn AS group,"
 			+ " SUM(o.quantity) AS count,"
 			+ " SUM(o.quantity * o.unitPrice * (1 - o.discount)) AS sum,"
 			+ " MIN(o.unitPrice) AS min, "
 			+ " MAX(o.unitPrice) AS max, "
 			+ " AVG(o.unitPrice) AS avg"
 			+ " FROM OrderDetail o "
-			+ " GROUP BY o.product.category.name") // truy vấn doanh số từng loại hàng
+			+ " GROUP BY o.product.category.nameVn") // truy vấn doanh số từng loại hàng
 	List<Report> getRevenueByCategory();
 
 	@Query("SELECT o.order.account.username AS group,"

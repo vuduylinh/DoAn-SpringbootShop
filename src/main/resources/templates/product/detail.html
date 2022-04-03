@@ -2,23 +2,55 @@
 <main th:attr="data-id=${item.id}">
 	<h4>CHI TIẾT SẢN PHẨM</h4>
 	<hr>
-	<img alt="anh san pham"  th:src="@{|/images/items/${item.image}|}">
-		<ul>
-			<li>Tên: <i th:text="${item.name}"></i></li>
-			<li>Giá: <i th:text="${item.unitPrice}"></i></li>
-			<li>Ngày sản xuất: <i th:text="${item.productDate}"></i></li>
-			<li>Hàng đặc biệt: <i th:text="${item.special ? 'phải':'không phải'}"></i></li>
-			<li>Loại sản phẩm: <i th:text="${item.category.nameVn}"></i></li>
-			<li>Mô tả sản phẩm: <i th:text="${item.description}"></i></li>
-							
-		</ul>
-		<div th:replace="product/_item-actions"></div>
-		<div>CÁC SẢN PHẨM CÙNG LOẠI</div>
-		<ul>
-			<li th:each="p: ${item.category.products}">
-				<a th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a>
-			</li>
-		</ul>
+		<div class="row p-3 justify-content-center">
+			<div class="col-sm-4" style="height: 280px">
+				<img alt="anh san pham" class="shadow-sm rounded border"  th:src="@{|/images/items/${item.image}|}" style="width: 100%;height: 100%">
+			<div class="float-end text-end">
+					<!-- Like  -->
+					<button type="button" class="btn btn-sm btn-success add-like"><i class='bx bx-heart bx-tada bx-flip-horizontal'></i></button>
+					<!-- share  -->
+					<button type="button" class="btn btn-sm btn-danger bx bx-share bx-flip-horizontal add-share"></button>
+			</div>
+		</div>
+				
+			<div class="col-sm-7 border border shadow-sm rounded">
+				<div class="row">
+				<div>Tên: <b th:text="${item.name}"></b></div>
+				<div>Giá: <i class="bg-warning text-dark" th:text="@{|${item.unitPrice} đ|}"></i></div>
+				<div>Ngày sản xuất: <b th:text="${item.productDate}"></b></div>
+				<div>Hàng đặc biệt: <b th:text="${item.special ? 'phải':'không phải'}"></b></div>
+				<div>Loại sản phẩm: <i class="fw-bolder" th:text="${item.category.nameVn}"></i></div>
+				<div>Mô tả sản phẩm: <i th:utext="${item.description}"></i></div>
+				<!-- cart  -->
+					<div class="float-end text-end mb-2 mt-2">
+					<button type="button" class="btn btn-primary add-to-cart"><i class='bx bxs-cart-add bx-flashing' ></i> Thêm vào giỏ hàng</button>
+					</div>	
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<div class="mt-4">CÁC SẢN PHẨM CÙNG LOẠI</div>
+		<hr/>
+			<div class="row">
+			<!-- 	<div class="col-sm-2" th:each="p: ${item.category.products}">
+					<a th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a>
+					<a th:href="@{|/product/detail/${p.id}|}"><img style="width: 50%;height: 50%"   alt="anh san pham" class="shadow-sm rounded border"  th:src="@{|/images/items/${p.image}|}"> </a>
+				</div> -->
+				
+			<div class="col-sm-2" th:each="p: ${item.category.products}">
+				<div class="card p-2 mb-1 text-center shadow-sm rounded">
+				 	<a th:href="@{|/product/detail/${p.id}|}"> <img th:src="@{|/images/items/${p.image}|}" style="width: 50px;height: 50px" class="card-img-top " alt="ảnh sản phẩm"></a>
+				  		<div>
+				  			<a class="text-black A-SP-CL" th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a>
+		 	 			</div>
+		 	 	</div>
+			</div>
+	</div>
+			
+		
+		<!-- hiện giao diện share -->
 		<div th:replace="/product/_share-dialog"></div>
 </main>
 

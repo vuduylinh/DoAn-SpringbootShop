@@ -25,7 +25,7 @@ public class Account {
 	String mobile;
 	String email;
 	String address;
-	String photo = "new.png";
+	String photo;
 	boolean activated;
 	
 	@OneToMany(mappedBy = "account")

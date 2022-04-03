@@ -8,44 +8,44 @@
 	    		<div class="col-10">
 	    			<div class="row mb-3">
 				        <div class="col-2">
-				            <label>Id</label>
+				            <label>Mã</label>
 				            <input th:field="*{id}" class="form-control" readonly>
 				        </div>
 				        <div class="col-4">
-				            <label>Name</label>
+				            <label>Tên sản phẩm</label>
 				            <input th:field="*{name}" class="form-control">
 				        </div>
 				        <div class="col">
-				            <label>Unit Price</label>
+				            <label>Đơn giá</label>
 				            <input th:field="*{unitPrice}" type="number" min="0" class="form-control">
 				        </div>
 				        <div class="col">
-				            <label>Quantity</label>
+				            <label>Số lượng</label>
 				            <input th:field="*{quantity}" type="number" class="form-control">
 				        </div>
 			        </div>
 			        <div class="row mb-3">
 			        	<div class="col-2">
-				            <label>Discount</label>
+				            <label>Giảm giá</label>
 				            <input th:field="*{discount}" type="number" min="0" max="1" step="0.01" class="form-control">
 				        </div>
 			        	<div class="col-4">
-				            <label>Image</label>
+				            <label>Hình</label>
 				            <input type="file" name="image_file" class="form-control">
 				            <input th:field="*{image}" type="hidden">
 				        </div>
 				        <div class="col">
-				            <label>Product Date</label>
+				            <label>Ngày sản xuất</label>
 				            <input th:field="*{productDate}" type="date" class="form-control">
 				        </div>
 				        <div class="col">
-				            <label>Like Count</label>
+				            <label>Lượt like</label>
 				            <input th:field="*{likeCount}" type="number" min="0" class="form-control">
 				        </div>
 			        </div>
 			        <div class="row mb-3">
 				        <div class="col">
-				            <label>Category</label>
+				            <label>Thuộc loại</label>
 				            <select th:field="*{category.id}" class="form-select">
 				            	<th:block th:each="c: ${categories}">
 				            		<option th:value="${c.id}" th:text="${c.nameVn}"></option>
@@ -53,7 +53,7 @@
 				            </select>
 				        </div>
 				        <div class="col">
-				            <label>Special?</label>
+				            <label>Đặc biệt?</label>
 				            <div class="form-control">
 				            	<label>
 				            		<input th:field="*{special}" type="radio" th:value="true"> Yes
@@ -64,7 +64,7 @@
 				            </div>
 				        </div>
 				        <div class="col">
-				            <label>Available?</label>
+				            <label>Có sẵn?</label>
 				            <div class="form-control">
 				            	<label>
 				            		<input th:field="*{available}" type="radio" th:value="true"> Yes
@@ -78,7 +78,7 @@
 	    		</div>
 	    	</div>
 	        <div class="mb-3">
-	            <label>Description</label>
+	            <label>Mô tả</label>
 	            <textarea th:field="*{description}" class="form-control" rows="3"></textarea>
 	        </div>
 	    </div>

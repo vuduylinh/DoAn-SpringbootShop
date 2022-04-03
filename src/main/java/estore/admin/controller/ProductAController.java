@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import estore.repository.Category;
@@ -60,7 +60,7 @@ public class ProductAController {
 		model.addAttribute("item", new Product());
 		return this.forward(model);
 	}
-	
+	// Entity dau
 	@RequestMapping("/admin/product/edit/{id}")
 	public String edit(Model model, @PathVariable("id") Integer id) {
 		Product item = productService.getById(id);
@@ -71,7 +71,7 @@ public class ProductAController {
 	
 	@RequestMapping("/admin/product/create")
 	public String create(Model model, 
-			@RequestPart("image_file") MultipartFile imageFile,
+			@RequestParam("image_file") MultipartFile imageFile,
 			@ModelAttribute("item") Product item) {
 		if(!imageFile.isEmpty()) {
 			File image = uploadService.save(imageFile, "/images/items/");
@@ -85,7 +85,7 @@ public class ProductAController {
 	
 	@RequestMapping("/admin/product/update")
 	public String update(Model model, 
-			@RequestPart("image_file") MultipartFile imageFile,
+			@RequestParam("image_file") MultipartFile imageFile,
 			@ModelAttribute("item") Product item) {
 		if(!imageFile.isEmpty()) {
 			File image = uploadService.save(imageFile, "/images/items/");

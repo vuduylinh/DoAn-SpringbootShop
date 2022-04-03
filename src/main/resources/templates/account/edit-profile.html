@@ -4,11 +4,27 @@
 <main th:fragment="view">
 	<form th:object="${form}" action="/account/edit-profile" method="post" enctype="multipart/form-data">
 		<div class="card">
-			<div class="card-header">
+			<div class="card-header fw-bold">
 				Chỉnh Sửa Thông Tin Cá Nhân
 				<i class="float-end text-danger" th:text="${message}"></i>
 			</div>
 			<div class="card-body">
+					<div class="card-header">
+						<div class="row">
+							<div class="col-sm-2">
+	        					<img th:src="@{|/images/photos/*{photo}|}" id="photo_img" style="height: 180px; max-width: 100%">
+	        				</div>
+	        				
+	        				<div class="col-sm-8">
+	        					<div><strong>Tên đăng nhâp: </strong> <i th:text="*{username}"></i></div>
+	        					<div> <strong>Họ và tên:  </strong> <i th:text="*{fullname}"></i></div>
+	        					<div><strong>Email:  </strong> <i th:text="*{email}"></i></div>
+	        					<div><strong>Số điện thoại: </strong>  <i th:text="*{mobile}"></i></div>
+	        					<div><strong>Địa chỉ: </strong>  <i th:text="*{address}"></i></div>
+	        				</div>
+							
+						</div>
+					</div>
 		        <div class="row mb-3">
 			        <div class="col">
 			            <label>Tên đăng nhập</label>
