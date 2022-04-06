@@ -23,7 +23,7 @@ public class OrderDetail {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Long id;
 	@Column(name = "unitprice")
-	double unitPrice;
+	int unitPrice;
 	int quantity;
 	double discount;
 	

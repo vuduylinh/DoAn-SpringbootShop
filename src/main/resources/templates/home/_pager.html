@@ -6,7 +6,7 @@
 			</a>
 		</li>
 		<li th:class="@{|page-item ${page.first ? 'disabled' : ''}|}">
-			<a class="page-link" th:href="@{|${path}/${page.number - 1}|}">
+			<a class="page-link" th:href="@{|${path}/${page.number - 1}|}"> <!-- page.number  trang trước hien tai -1 -->
 				<i class='bx bxs-chevrons-left p-1'></i>
 			</a>
 		</li>
@@ -16,11 +16,13 @@
 			</a>
 		</li>
 		<li th:class="@{|page-item ${page.last ? 'disabled':''}|}">
+				<!-- page.number trang sau hien tai -1 -->
 			<a class="page-link" th:href="@{|${path}/${page.number + 1}|}">
 				<i class='bx bxs-chevrons-right p-1'></i>
 			</a>
 		</li>
 		<li class="page-item">
+				<!-- page.totalPages trang cuối = tổng số trang -1 -->
 			<a class="page-link" th:href="@{|${path}/${page.totalPages - 1}|}">
 				<i class='bx bxs-chevrons-down p-1'></i>
 			</a>

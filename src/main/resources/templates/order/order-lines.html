@@ -10,6 +10,7 @@
 	            <th>Gía giảm</th>
 	            <th>Số Lượng</th>
 	            <th>Thành tiền</th>
+	       
 	        </tr>
 	    </thead>
 	    <tbody>
@@ -21,7 +22,8 @@
 	            <td th:text="@{|${itm.discount * 100}%|}"></td>
 	            <td th:text="${itm.quantity}"></td>
 	            <td th:text="@{|${#numbers.formatDecimal(itm.unitPrice*itm.quantity*(1-itm.discount), 0, 2)}đ|}"></td>
-	        </tr>
+	        </tr>	
 	    </tbody>
 	</table>
+	<div> Tổng giá tiền: <span class="fw-bold" th:text="${#numbers.formatDecimal(item.amount, 1, 'DEFAULT', 0, 'DEFAULT')}"></span></div>
 </div>

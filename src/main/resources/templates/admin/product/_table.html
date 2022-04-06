@@ -18,9 +18,9 @@
 	            <td th:text="${st.count + page.number * page.size}"></td>
 	            <td th:text="${itm.id}"></td>
 	            <td th:text="${itm.name}"></td>
-	            <td th:text="${itm.unitPrice}"></td>
+	            <td th:text="@{|${itm.unitPrice} đ|}"></td>
 	            <td th:text="${itm.quantity}"></td>
-	            <td th:text="${itm.discount}"></td>
+	            <td th:text="@{|${itm.discount} %|}"></td>
 	            <td th:text="${itm.productDate}"></td>
 	            <td th:text="${itm.special?'Yes':'No'}"></td>
 	            <td>

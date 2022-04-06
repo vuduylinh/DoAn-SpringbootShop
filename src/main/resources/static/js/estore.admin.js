@@ -24,4 +24,6 @@ $(document).ready(function() {
         };
         fileReader.readAsDataURL(file);
     }
+   
+
 });

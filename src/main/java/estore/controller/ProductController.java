@@ -104,7 +104,7 @@ public class ProductController {
 		MailerService mailerService;
 		
 		@ResponseBody
-		@RequestMapping("/product/share-send") // like
+		@RequestMapping("/product/share-send") // share
 		public void share(Model model,@RequestBody Share share) {
 			//save data
 			shareService.create(share);

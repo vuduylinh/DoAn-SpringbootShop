@@ -42,6 +42,9 @@ public interface ProductDAO extends JpaRepository<Product, Integer>{
 	@Query("SELECT DISTINCT o.product FROM OrderDetail o WHERE o.order.account.username=?1")
 	List<Product> findByUsername(String username);
 
+	
+	
+	
 	// phân trang listProduct ở trang home/index
 	@Query("SELECT o FROM Product o")
 	Page<Product> findByList(Pageable pageable);

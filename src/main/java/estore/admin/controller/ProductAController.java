@@ -57,10 +57,10 @@ public class ProductAController {
 	
 	@RequestMapping("/admin/product/index")
 	public String index(Model model) {
-		model.addAttribute("item", new Product());
-		return this.forward(model);
+		model.addAttribute("item", new Product()); // tạo mới 1 thực thể bỏ vào model
+		return this.forward(model); // gọi đến hàm forward, return kq do hàm này trả về
 	}
-	// Entity dau
+	
 	@RequestMapping("/admin/product/edit/{id}")
 	public String edit(Model model, @PathVariable("id") Integer id) {
 		Product item = productService.getById(id);
@@ -78,7 +78,7 @@ public class ProductAController {
 			item.setImage(image.getName());
 		}
 		productService.create(item);
-		model.addAttribute("message", "Create successfully!");
+		model.addAttribute("message", "Tạo mới thành công!");
 		model.addAttribute("edit", true);
 		return this.forward(model);
 	}
@@ -92,7 +92,7 @@ public class ProductAController {
 			item.setImage(image.getName());
 		}
 		productService.update(item);
-		model.addAttribute("message", "Update successfully!");
+		model.addAttribute("message", "Cập nhật thành công!");
 		model.addAttribute("edit", true);
 		return this.forward(model);
 	}
@@ -100,7 +100,7 @@ public class ProductAController {
 	@RequestMapping("/admin/product/delete/{id}")
 	public String delete(Model model, @PathVariable("id") Integer id) {
 		productService.deleteById(id);
-		model.addAttribute("message", "Delete successfully!");
+		model.addAttribute("message", "Xóa thành công!");
 		
 		model.addAttribute("item", new Product());
 		model.addAttribute("edit", false);
@@ -109,9 +109,9 @@ public class ProductAController {
 	
 	String forward(Model model) {
 		Integer cid = sessionService.get("cid", 1000);
-		Integer pageNumber = sessionService.get("pageNumber", 0);
-		Pageable pageable = PageRequest.of(pageNumber, 5);
-		Page<Product> page = productService.findByCategoryId(cid, pageable);
+		Integer pageNumber = sessionService.get("pageNumber", 0); 
+		Pageable pageable = PageRequest.of(pageNumber, 5);// mỗi trang gồm 5sp
+		Page<Product> page = productService.findByCategoryId(cid, pageable);// tìm theo mã loại lấy từ session
 		model.addAttribute("page", page);
 		return "admin/product/index";
 	}

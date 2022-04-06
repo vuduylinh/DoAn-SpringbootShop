@@ -21,7 +21,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
+@AllArgsConstructor                  
 @NoArgsConstructor
 @Data
 @Entity
@@ -33,7 +33,7 @@ public class Product {
 	String name;
 	String image;
 	@Column(name = "unitprice")
-	double unitPrice;
+	int unitPrice;
 	double discount;
 	int quantity = 1;
 	@Column(name = "productdate")

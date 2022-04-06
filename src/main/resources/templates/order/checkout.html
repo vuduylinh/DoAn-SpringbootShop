@@ -6,6 +6,8 @@
     	<!-- !!!!!!!!!! -->
     		<div class="mb-3">
 	        	<div th:replace="/cart/index::scart"></div>
+	        	<div> Tổng giá: <span class="fw-bold" th:text="${#numbers.formatDecimal(item.amount, 1, 'DEFAULT', 0, 'DEFAULT')}"></span></div>
+	        	
 	        </div>
 	        
 	    <!-- !!!!!!!!!! -->
@@ -13,7 +15,7 @@
     		<div class="row mb-3">
 		        <div class="col">
 		            <label>Mã</label>
-		            <input th:field="*{id}" class="form-control" placeholder="Auto Number" readonly>
+		            <input th:field="*{id}" class="form-control" placeholder="******" readonly>
 		        </div>
 		        <div class="col">
 		            <label>Khách hàng</label>
@@ -23,9 +25,11 @@
 		            <label>Ngày đặt</label>
 		            <input th:field="*{orderDate}" class="form-control" readonly>
 		        </div>
-		        <div class="col">
-		            <label>Tổng giá</label>
-		            <input th:field="*{amount}" class="form-control" readonly>
+		         <div class="col" hidden>
+		             <div class="col">
+		            <label>Tông tiền</label>
+		            <input th:field="*{amount}" class="form-control" readonly hidden>
+		        </div>
 		        </div>
 	        </div>
 	        <div class="row mb-3">

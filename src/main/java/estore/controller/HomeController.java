@@ -2,7 +2,6 @@ package estore.controller;
 
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,9 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import estore.admin.bean.AccountFilter;
-import estore.repository.Account;
-import estore.repository.Order;
 import estore.repository.Product;
 import estore.repository.service.ProductService;
 import estore.service.session.SessionService;
@@ -54,15 +50,22 @@ public class HomeController {
 	
 	@RequestMapping("/home/index")
 	public String index(Model model) {
-		model.addAttribute("item", new Product());
-		return this.forward(model);
+		model.addAttribute("item", new Product()); // tạo mới 1 thực thể bỏ vào trong model
+		return this.forward(model); // gọi đến hàm forward, return kq do hàm này trả về
 	}
+	
+	
 	private String forward(Model model) {
+		//PageRequest.of(pageNumber, 12) tương đương với lấy ra page đầu tiên, và mỗi page sẽ có 5 phần tử
+		// PageRequest là một đối tượng kế thừa Pageable
 //		Integer cid = sessionService.get("cid", 1000);
 		Integer pageNumber = sessionService.get("pageNumber", 0);
-		Pageable pageable = PageRequest.of(pageNumber, 12);
+		Pageable pageable = PageRequest.of(pageNumber, 12); // phân trang chạy từ giá trị pageNumber , 12
 		Page<Product> page = productService.findByList(pageable);
 		model.addAttribute("page", page);
+		
+		
+		
 		
 		// lấy ra sp mới nhất
 		Page<Product> latest = productService.findByLatest(PageRequest.of(0, 4));// phan trang
@@ -73,7 +76,7 @@ public class HomeController {
 		pageable = PageRequest.of(0, 4, Direction.DESC, "discount");
 		List<Product> prom = productService.findByDiscount(pageable).getContent();
 		model.addAttribute("prom", prom);
-		return "/home/index";
+		return "home/index";
 	}
 	
 	
